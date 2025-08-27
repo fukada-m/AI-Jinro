@@ -5,7 +5,7 @@ public class CountdownTimer : MonoBehaviour
 {
     [SerializeField]
     Text countdownText;
-    public float startTime = 30f;
+    public float startTime;
 
     private float currentTime;
     private bool isCounting = false;
@@ -24,7 +24,7 @@ public class CountdownTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-                if (currentTime > 0 && isCounting)
+        if (currentTime > 0 && isCounting)
         {
             currentTime -= Time.deltaTime; // 毎フレーム減らす
             string timeString = Mathf.CeilToInt(currentTime).ToString();
