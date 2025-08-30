@@ -10,7 +10,7 @@ public class ChangeSize : MonoBehaviour
 
     Vector2 initialSize;
 
-    void Start()
+    void Awake()
     {
         // 現在のサイズを取得して初期サイズとする
         initialSize = rect.sizeDelta;
