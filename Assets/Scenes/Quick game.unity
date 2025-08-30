@@ -736,7 +736,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519897959}
   m_Layer: 5
-  m_Name: Theme
+  m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,6 +1213,7 @@ GameObject:
   - component: {fileID: 810498990}
   - component: {fileID: 810498988}
   - component: {fileID: 810498991}
+  - component: {fileID: 810498992}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1232,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c49f5baf358ca4b9dace701768e5c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _themeText: {fileID: 1044143718}
+  _boardManager: {fileID: 810498992}
   _countdownTimer: {fileID: 364805246}
   _messageContext: {fileID: 810498990}
   _chatState: {fileID: 810498991}
@@ -1292,6 +1293,19 @@ MonoBehaviour:
   scrollRect: {fileID: 2010801891}
   content: {fileID: 1825810351}
   messagePrefab: {fileID: 4052208114736663642, guid: a6687c3aeaf49ab4f8fd6dbaeca34d68, type: 3}
+--- !u!114 &810498992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810498985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575de090c027d944e8234c7c17aa8891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _board: {fileID: 1044143718}
 --- !u!1 &820319863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,7 +1777,7 @@ GameObject:
   - component: {fileID: 1044143719}
   - component: {fileID: 1044143718}
   m_Layer: 5
-  m_Name: Theme Text (Legacy)
+  m_Name: Board Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
