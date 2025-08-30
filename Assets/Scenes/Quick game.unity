@@ -207,6 +207,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _changeSizeManager
+      value: 
+      objectReference: {fileID: 1682254257}
     - target: {fileID: 7382024657409022375, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: m_Name
       value: Circle UI (5)
@@ -425,6 +429,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _changeSizeManager
+      value: 
+      objectReference: {fileID: 1682254257}
     - target: {fileID: 7382024657409022375, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: m_Name
       value: Circle UI (2)
@@ -705,6 +713,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _changeSizeManager
+      value: 
+      objectReference: {fileID: 1682254257}
     - target: {fileID: 7382024657409022375, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: m_Name
       value: Circle UI
@@ -788,6 +800,7 @@ RectTransform:
   - {fileID: 293490228}
   - {fileID: 927867712}
   - {fileID: 199251500}
+  - {fileID: 1682254256}
   m_Father: {fileID: 1660257884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1063,6 +1076,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _changeSizeManager
+      value: 
+      objectReference: {fileID: 1682254257}
     - target: {fileID: 7382024657409022375, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: m_Name
       value: Circle UI (3)
@@ -1987,6 +2004,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _changeSizeManager
+      value: 
+      objectReference: {fileID: 1682254257}
     - target: {fileID: 7382024657409022375, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: m_Name
       value: Circle UI (4)
@@ -1996,6 +2017,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+--- !u!114 &1250190510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+  m_PrefabInstance: {fileID: 76543263}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd33a46eeb9356439658ee0111a4e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1363543320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+  m_PrefabInstance: {fileID: 1945812376}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd33a46eeb9356439658ee0111a4e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1395219214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,6 +2206,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6167627286412073661, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1634502109}
+    - target: {fileID: 6167627286412073661, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167627286412073661, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChangeSize, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167627286412073661, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _changeSizeManager
+      value: 
+      objectReference: {fileID: 1682254257}
     - target: {fileID: 7382024657409022375, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: m_Name
       value: Circle UI (6)
@@ -2252,6 +2315,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 127052137550660475, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
   m_PrefabInstance: {fileID: 510655181}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1634502109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+  m_PrefabInstance: {fileID: 1457499274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd33a46eeb9356439658ee0111a4e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1660257880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,6 +2435,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1682254255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682254256}
+  - component: {fileID: 1682254257}
+  m_Layer: 5
+  m_Name: Chage size manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1682254256
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682254255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 526127886}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1682254257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682254255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d373c9d039a884b9443a228b34caa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bigSize: {x: 110, y: 110}
+  _changeSizes:
+  - {fileID: 1907048662}
+  - {fileID: 1363543320}
+  - {fileID: 2038310502}
+  - {fileID: 1881564999}
+  - {fileID: 2010837759}
+  - {fileID: 1250190510}
+  - {fileID: 1634502109}
 --- !u!1 &1682723768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,6 +2826,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 127052137550660475, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
   m_PrefabInstance: {fileID: 599184782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1881564999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+  m_PrefabInstance: {fileID: 599184782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd33a46eeb9356439658ee0111a4e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1907048662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+  m_PrefabInstance: {fileID: 510655181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd33a46eeb9356439658ee0111a4e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1919769776
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3339,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _changeSizeManager
+      value: 
+      objectReference: {fileID: 1682254257}
     - target: {fileID: 7382024657409022375, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: m_Name
       value: Circle UI (1)
@@ -3304,11 +3461,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010801889}
   m_CullTransparentMesh: 1
+--- !u!114 &2010837759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+  m_PrefabInstance: {fileID: 1244985739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd33a46eeb9356439658ee0111a4e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2038310499 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 127052137550660475, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
   m_PrefabInstance: {fileID: 136746638}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2038310502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312526786308325374, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+  m_PrefabInstance: {fileID: 136746638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd33a46eeb9356439658ee0111a4e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

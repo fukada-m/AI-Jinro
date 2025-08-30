@@ -1,20 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
-public class ChatManager : MonoBehaviour
+
+public class ChatState : MonoBehaviour, IMessageState
 {
     [SerializeField] private InputField inputField;  // 入力欄
-    [SerializeField] private Transform content;          // Content オブジェクト
-    [SerializeField] private GameObject messagePrefab;   // メッセージのPrefab
     [SerializeField] private ScrollRect scrollRect;      // ScrollView本体
+    [SerializeField] private Transform content;          // メッセージを表示する Content オブジェクト
+    [SerializeField] private GameObject messagePrefab;   // メッセージのPrefab
 
-    public void OnSendMessage()
+    public void SendMessage()
     {
         string text = inputField.text;
         if (string.IsNullOrWhiteSpace(text)) return;
 
-        // メッセージ生成
+        // contentの子としてメッセージプレハブを生成して入力した文字を表示
         GameObject newMessage = Instantiate(messagePrefab, content);
         Text messageText = newMessage.GetComponent<Text>();
         messageText.text = text;
