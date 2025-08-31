@@ -3,15 +3,15 @@ using UnityEngine.UI;
 
 public class MessageContext : MonoBehaviour
 {
-    IMessageState _messageState;
+    IMessageState _state;
 
     public void SetState(IMessageState ms)
     {
-        _messageState = ms;
+        _state = ms;
     }
 
     public void OnClick()
     {
-        _messageState.SendMessage();
+        _state.SendMessage();
     }
 }
