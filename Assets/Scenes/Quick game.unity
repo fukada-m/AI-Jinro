@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c49f5baf358ca4b9dace701768e5c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boardManager: {fileID: 810498992}
+  _board: {fileID: 810498992}
   _countdownTimer: {fileID: 364805246}
   _messageContext: {fileID: 810498990}
   _chatState: {fileID: 810498991}

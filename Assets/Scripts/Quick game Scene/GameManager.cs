@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] BoadManager _boardManager; // 掲示板を管理する
+    [SerializeField] Boad _board; // 掲示板
     [SerializeField] CountdownTimer _countdownTimer;  // 残り秒数を表示する
     [SerializeField] MessageContext _messageContext;  // メッセージのステートパターン
     [SerializeField] ChatState _chatState; // チャットステート
@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _boardManager.Initialize();  // 掲示板を初期化
+        _board.Initialize();  // 掲示板を初期化
         _countdownTimer.StartCountdown(); // カウントダウンスタート
         _messageContext.SetState(_subjectState); // 最初はお題ステート
     }

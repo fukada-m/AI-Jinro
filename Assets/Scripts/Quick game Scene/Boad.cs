@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BoadManager : MonoBehaviour
+public class Boad : MonoBehaviour
 {
-    // ボードテキストの配列7こがある
+    // ボードテキストの配列7個ある
     string[] _textArr = new string[7];
 
     int _currentIndex;
