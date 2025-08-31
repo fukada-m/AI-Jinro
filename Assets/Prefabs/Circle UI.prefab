@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 103113603389694957}
   - component: {fileID: 4602094924875416296}
   - component: {fileID: 6167627286412073661}
-  - component: {fileID: 7312526786308325374}
+  - component: {fileID: 4458433522025872570}
   m_Layer: 5
   m_Name: Circle UI
   m_TagString: Untagged
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7312526786308325374}
-        m_TargetAssemblyTypeName: ChangeSize, Assembly-CSharp
+      - m_Target: {fileID: 4458433522025872570}
+        m_TargetAssemblyTypeName: Circle, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -133,7 +133,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7312526786308325374
+--- !u!114 &4458433522025872570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7382024657409022375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd33a46eeb9356439658ee0111a4e8e, type: 3}
+  m_Script: {fileID: 11500000, guid: f0d842ead45c3e2429725121a0eb6a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 127052137550660475}
-  _changeSizeManager: {fileID: 0}
+  index: 0
