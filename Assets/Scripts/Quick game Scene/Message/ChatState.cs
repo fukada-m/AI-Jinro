@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class ChatState : MonoBehaviour, IMessageState
 {
-    [SerializeField] private InputField inputField;  // 入力欄
-    [SerializeField] private ScrollRect scrollRect;      // ScrollView本体
-    [SerializeField] private Transform content;          // メッセージを表示する Content オブジェクト
-    [SerializeField] private GameObject messagePrefab;   // メッセージのPrefab
+    [SerializeField] InputField inputField;  // 入力欄
+    [SerializeField] ScrollRect scrollRect;      // ScrollView本体
+    [SerializeField] Transform content;          // メッセージを表示する Content オブジェクト
+    [SerializeField] GameObject messagePrefab;   // メッセージのPrefab
 
     public void SendMessage()
     {
