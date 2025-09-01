@@ -1,12 +1,13 @@
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Boad : MonoBehaviour
 {
-    // ボードテキストの配列7個ある
-    string[] _textArr = new string[7];
+    public int CurrentIndex;
+    [SerializeField] Circle[] _circles = new Circle[7];
+    string[] _textArr = new string[7]; // ボードテキストの配列7個ある
 
-    int _currentIndex;
 
     [SerializeField]
     // 現在のボード
@@ -15,7 +16,13 @@ public class Boad : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _currentIndex = 0;
+        CurrentIndex = 0; //初期インデックスは 0
+        foreach (var circle in _circles)
+        {
+            circle.OnClicked
+                .Subscribe(circle => CurrentIndex = circle.Index)
+                .AddTo(this);
+        }
     }
 
     // 本来はAIに考えさせてからテキストをセットするためStartより後のタイミングで実行する
@@ -23,8 +30,7 @@ public class Boad : MonoBehaviour
     {
         // とりあえずお題は固定
         _textArr[0] = "日本人の国民性";
-        // 最初は[0]を表示 
-        _board.text = _textArr[_currentIndex];
+        _board.text = _textArr[CurrentIndex]; // 最初は[0]を表示 
     }
 
     // Update is called once per frame
