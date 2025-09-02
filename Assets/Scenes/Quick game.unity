@@ -1310,6 +1310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d769115bbab42e4582c4925c157f936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _board: {fileID: 810498992}
+  inputField: {fileID: 1926593721}
 --- !u!114 &810498990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,6 +1353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIndex: 0
+  _titleText: {fileID: 387546036}
+  _mainText: {fileID: 1044143718}
   _circles:
   - {fileID: 1907048666}
   - {fileID: 1978375552}
@@ -1359,7 +1363,6 @@ MonoBehaviour:
   - {fileID: 2010837763}
   - {fileID: 2030200245}
   - {fileID: 1743202013}
-  _board: {fileID: 1044143718}
 --- !u!1 &820319863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,7 +1834,7 @@ GameObject:
   - component: {fileID: 1044143719}
   - component: {fileID: 1044143718}
   m_Layer: 5
-  m_Name: Board Text (Legacy)
+  m_Name: Main Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
