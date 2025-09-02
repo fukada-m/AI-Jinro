@@ -19,32 +19,34 @@ public class CircleSelector : MonoBehaviour
             circle.OnClicked
                 .Subscribe(circle =>
                 {
-                    foreach (var c in _circles) c.SizeInitialize();
-                    circle.ChangeSize(_bigSize);
+                    Select(circle);
                     CurrentCircle = circle.Index;
                 })
                 .AddTo(this);
         }
     }
 
+    // 次の丸を選択する
     public void Next()
     {
+        // 6の次は無い
         if (CurrentCircle < 6) CurrentCircle++;
-        foreach (var c in _circles)
-        {
-            c.SizeInitialize();
-        }
-        _circles[CurrentCircle].ChangeSize(_bigSize);
+        Select(_circles[CurrentCircle]);
+
     }
 
+    // ひとつ前の丸を選択する
     public void Back()
     {
+        // 0より前は無い
         if (CurrentCircle > 0) CurrentCircle--;
-        foreach (var c in _circles)
-        {
-            c.SizeInitialize();
-        }
-        _circles[CurrentCircle].ChangeSize(_bigSize);
+        Select(_circles[CurrentCircle]);
     }
 
+    // 一度全ての丸を初期サイズに戻してから選択された丸だけ拡大する
+    void Select(Circle circle)
+    {
+        foreach (var c in _circles) c.SizeInitialize();
+        circle.ChangeSize(_bigSize);
+    }
 }
