@@ -59,4 +59,18 @@ public class Boad : MonoBehaviour
         _mainText.text = _mainTextArr[i];
         _titleText.text = _titleTextArr[i];
     }
+
+    public void Next()
+    {
+        // 6の次は無い
+        if (CurrentIndex < 6) CurrentIndex++;
+        Display(CurrentIndex);
+    }
+
+    public void Back()
+    {
+        // 0より小さくならない
+        if (CurrentIndex > 0) CurrentIndex--;
+        Display(CurrentIndex);
+    }
 }
