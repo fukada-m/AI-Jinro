@@ -943,6 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dbb9e36bce5664e827ac4ac47e27ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentCircle: 0
   _bigSize: {x: 110, y: 110}
   _circles:
   - {fileID: 1907048666}
@@ -2553,6 +2554,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 526127888}
+        m_TargetAssemblyTypeName: CircleSelector, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1529065039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,6 +2769,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 810498992}
         m_TargetAssemblyTypeName: Boad, Assembly-CSharp
+        m_MethodName: Next
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 526127888}
+        m_TargetAssemblyTypeName: CircleSelector, Assembly-CSharp
         m_MethodName: Next
         m_Mode: 1
         m_Arguments:
