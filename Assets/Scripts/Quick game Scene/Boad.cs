@@ -2,18 +2,21 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-// 掲示板を管理するクラス
+// 掲示板を管理するクラス。クイックゲームは参加者が6人で固定
 public class Boad : MonoBehaviour
 {
-    public int CurrentIndex; // 今どのボードを表示しているか管理する
-    [SerializeField] Text _board; //ボードに表示する文字列
+    public int CurrentIndex; // 今どのボードを表示しているか管理する変数
+    [SerializeField] Text _titleText; // ボードに表示されるタイトル
+    [SerializeField] Text _mainText; // ボードに表示される本文
     [SerializeField] Circle[] _circles = new Circle[7]; // 丸の配列 7 個ある
-    string[] _textArr = new string[7]; // ボードに表示するテキストの配列 7 個ある
+    string[] _mainTextArr = new string[7]; // ボードに表示する本文の配列 7 個ある
+    string[] _titleTextArr = new string[7]; // ボードに表示するタイトルの配列 7 個ある
 
     void Start()
     {
         CurrentIndex = 0; //初期インデックスは 0
-        // イベントを購読。丸がクリックされたら表示される内容を丸に対応するものに変更
+
+        // イベントを購読。丸がクリックされたら表示される内容を丸に対応するものに変更する処理
         foreach (var circle in _circles)
         {
             circle.OnClicked
@@ -24,26 +27,36 @@ public class Boad : MonoBehaviour
                 })
                 .AddTo(this);
         }
+
+        // ボードのタイトルに文字列をセットする
+        for (int i = 0; i < _titleTextArr.Length; i++)
+        {
+            if (i == 0) _titleTextArr[i] = "お題";
+            if (i > 0) _titleTextArr[i] = $"プレイヤー{i}";
+        }
     }
 
     // 本来はAIに考えさせてからテキストをセットするためStartより後のタイミングで実行する
     public void Initialize()
     {
         // とりあえずお題は固定
-        _textArr[0] = "日本人の国民性";
-        _board.text = _textArr[CurrentIndex]; // 最初は[0]を表示 
+        _mainTextArr[0] = "日本人の国民性";
+        _mainText.text = _mainTextArr[CurrentIndex]; // 最初は[0]を表示 
     }
 
     // ボードに文字列をセットし表示するメソッド
+    // 引数には表示するボードの番号と文字列を受け取る
     public void SetText(int i, string s)
     {
-        _textArr[i] = s;
+        _mainTextArr[i] = s;
         Display(i);
     }
 
     // ボードに表示するメソッド
+    // 引数には表示するボードの番号を受け取る
     public void Display(int i)
     {
-        _board.text = _textArr[i];
+        _mainText.text = _mainTextArr[i];
+        _titleText.text = _titleTextArr[i];
     }
 }
