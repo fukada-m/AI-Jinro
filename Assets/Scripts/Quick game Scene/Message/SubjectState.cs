@@ -4,7 +4,7 @@ using UnityEngine.UI;
 // お題への回答を投稿するステート
 public class SubjectState : MonoBehaviour, IMessageState
 {
-    [SerializeField] Boad _board;  // ボード
+    [SerializeField] Board _board;  // ボード
     [SerializeField] InputField inputField;  // 入力欄
 
     // メッセージを掲示板に送って入力欄をクリア

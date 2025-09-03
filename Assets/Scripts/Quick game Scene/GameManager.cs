@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Boad _board; // 掲示板
+    [SerializeField] Board _board; // 掲示板
     [SerializeField] CountdownTimer _countdownTimer;  // 残り秒数を表示する
     [SerializeField] MessageContext _messageContext;  // メッセージのステートパターン
     [SerializeField] ChatState _chatState; // チャットステート

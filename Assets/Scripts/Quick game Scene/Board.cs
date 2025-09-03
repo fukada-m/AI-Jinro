@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 掲示板を管理するクラス。クイックゲームは参加者が6人で固定
-public class Boad : MonoBehaviour
+public class Board : MonoBehaviour
 {
     public int CurrentIndex; // 今どのボードを表示しているか管理する変数
     [SerializeField] Text _titleText; // ボードに表示されるタイトル
@@ -73,4 +73,10 @@ public class Boad : MonoBehaviour
         if (CurrentIndex > 0) CurrentIndex--;
         Display(CurrentIndex);
     }
+
+    // お題を提供する
+    public string GetSubject()
+    {
+        return _mainTextArr[0];
+    } 
 }
