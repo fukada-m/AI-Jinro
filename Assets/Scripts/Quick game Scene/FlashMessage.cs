@@ -15,9 +15,9 @@ public class FlashMessage : MonoBehaviour
 
     void Start()
     {
+        // 初期位置を保存
         parentRect = messageText.transform.parent.GetComponent<RectTransform>();
-        startPos = parentRect.anchoredPosition; // 初期位置を保存
-        ShowMessage("ぱちぱちタイム");
+        startPos = parentRect.anchoredPosition;
     }
 
     // メッセージを表示してコルーチンを起動

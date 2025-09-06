@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Board _board; // 掲示板
+    [SerializeField] FlashMessage _flashMessage; // フラッシュメージ
     [SerializeField] CountdownTimer _countdownTimer;  // 残り秒数を表示する
     [SerializeField] MessageContext _messageContext;  // メッセージのステートパターン
     [SerializeField] ChatState _chatState; // チャットステート
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
         _board.Initialize();  // 掲示板を初期化
         _countdownTimer.StartCountdown(); // カウントダウンスタート
         _messageContext.SetState(_subjectState); // 最初はお題ステート
+        _flashMessage.ShowMessage("お題に答えよう");
     }
 
     void Update()
