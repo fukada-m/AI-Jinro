@@ -7,7 +7,7 @@ public class Circle : MonoBehaviour
     [SerializeField] RectTransform rect; // 自分の今のサイズ
     public int Index; // 自分の番号
     Vector2 initialSize;  // 初期サイズを取っておくのに使う
-    Subject<Circle> clicked = new Subject<Circle>(); // クリックされたら数値を渡すイベント
+    Subject<Circle> clicked = new Subject<Circle>(); // クリックされたら Circle を渡すイベント
     public IObservable<Circle> OnClicked => clicked; // イベントは IObservable として外部には公開
 
     void Awake()
