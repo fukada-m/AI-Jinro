@@ -1,42 +1,48 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UniRx;
+using System;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public bool IsCounting { get; private set; } // カウントダウンしているかどうか
-
-    [SerializeField]
-    Text _text;
-    [SerializeField]
-    float _startTime;
+    [SerializeField] Text _text; //あと何秒か表示する
+    [SerializeField] float _startTime; // タイマーが何秒か決める
 
     private float _currentTime;
+    private Coroutine _countdownCoroutine;
 
-    public void StartCountdown()
-    {
-        IsCounting = true;
-    }
+    // カウントダウンが終了したことを通知するイベント
+    Subject<bool> noticeEndCount = new Subject<bool>();
+    public IObservable<bool> EndCount => noticeEndCount;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _currentTime = _startTime;
-        IsCounting = false;
+        _text.text = $"あと{Mathf.CeilToInt(_currentTime)}秒";
+    }
+    public void StartCountdown()
+    {
+        if (_countdownCoroutine != null)
+        {
+            StopCoroutine(_countdownCoroutine);
+        }
+        _countdownCoroutine = StartCoroutine(CountdownRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator CountdownRoutine()
     {
-        if (_currentTime > 0 && IsCounting)
+        _currentTime = _startTime;
+
+        while (_currentTime > 0)
         {
-            _currentTime -= Time.deltaTime; // 毎フレーム進んだ秒数を減らす
-            string timeString = Mathf.CeilToInt(_currentTime).ToString();
-            _text.text = $"あと{timeString}秒";
+            _text.text = $"あと{Mathf.CeilToInt(_currentTime)}秒";
+            yield return null; // 1フレーム待つ
+            _currentTime -= Time.deltaTime;
         }
-        else
-        {
-            _text.text = "終了";
-            IsCounting = false;
-        }
+
+        _text.text = "終了";
+        noticeEndCount.OnNext(false); //カウントダウン終了したことを通知
     }
+    
 }
