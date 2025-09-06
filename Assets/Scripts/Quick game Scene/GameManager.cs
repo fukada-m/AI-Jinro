@@ -1,3 +1,4 @@
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,22 +15,20 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _board.Initialize();  // 掲示板を初期化
+        _countdownTimer.EndCount.Subscribe(isCounting => ChangeState(isCounting)).AddTo(this); // カウントダウンが終わると通知されるイベントを購読
         _countdownTimer.StartCountdown(); // カウントダウンスタート
         _messageContext.SetState(_subjectState); // 最初はお題ステート
         _flashMessage.ShowMessage("お題に答えよう");
     }
 
-    void Update()
+    // カウントダウンが終了したらステートを変える
+    void ChangeState(bool isCounting)
     {
-        // カウントダウン中ならお題ステート、カウントダウンしていなければチャットステート
-        if (_countdownTimer.IsCounting)
+        if (!isCounting)
         {
-            _messageContext.SetState(_subjectState);
-        }
-        else
-        {
-            _messageContext.SetState(_chatState);
-        }
+             _messageContext.SetState(_chatState);
+            _flashMessage.ShowMessage("誰がAIなのかチャットで話し合おう");
+        }   
     }
 
 }
