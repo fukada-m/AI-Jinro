@@ -13,7 +13,7 @@ public class FlashMessage : MonoBehaviour
     Vector3 startPos; // スタート位置
     Coroutine currentCoroutine;
 
-    void Start()
+    void Awake()
     {
         // 初期位置を保存
         parentRect = messageText.transform.parent.GetComponent<RectTransform>();
