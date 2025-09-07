@@ -15,20 +15,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _board.Initialize();  // 掲示板を初期化
-        _countdownTimer.EndCount.Subscribe(isCounting => ChangeState(isCounting)).AddTo(this); // カウントダウンが終わると通知されるイベントを購読
+        _countdownTimer.EndCount.Subscribe(isCounting => ChangeChatState(isCounting)).AddTo(this); // カウントダウンが終わると通知されるイベントを購読
         _countdownTimer.StartCountdown(); // カウントダウンスタート
         _messageContext.SetState(_subjectState); // 最初はお題ステート
         _flashMessage.ShowMessage("お題に答えよう");
     }
 
-    // カウントダウンが終了したらステートを変える
-    void ChangeState(bool isCounting)
+    // お題フェーズのカウントダウンが終了したらチャットステートに変える
+    void ChangeChatState(bool isCounting)
     {
         if (!isCounting)
         {
-             _messageContext.SetState(_chatState);
+            _messageContext.SetState(_chatState);
             _flashMessage.ShowMessage("誰がAIなのかチャットで話し合おう");
-        }   
+        }
     }
+    
 
 }
