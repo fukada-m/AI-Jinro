@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] MessageContext _messageContext;  // メッセージのステートパターン
     [SerializeField] ChatState _chatState; // チャットステート
     [SerializeField] SubjectState _subjectState; // お題ステート
+    [SerializeField] int _subjectTime;
+    [SerializeField] int _chatTime;
     string _currentPhase;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
         _currentPhase = "お題";
         _board.Initialize();  // 掲示板を初期化
         _countdownTimer.EndCount.Subscribe(isCounting => ChangePhase()).AddTo(this); // カウントダウンが終わると通知されるイベントを購読
-        _countdownTimer.StartCountdown(30); // カウントダウンスタート
+        _countdownTimer.StartCountdown(_subjectTime); // カウントダウンスタート
         _messageContext.SetState(_subjectState); // 最初はお題ステート
         _flashMessage.ShowMessage("お題に答えよう");
     }
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         _messageContext.SetState(_chatState);
         _flashMessage.ShowMessage("誰がAIなのかチャットで話し合おう");
-        _countdownTimer.StartCountdown(120);
+        _countdownTimer.StartCountdown(_chatTime);
     }
     
 
