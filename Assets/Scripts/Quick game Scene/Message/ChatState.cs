@@ -4,26 +4,26 @@ using UnityEngine.UI;
 
 public class ChatState : MonoBehaviour, IMessageState
 {
-    [SerializeField] InputField inputField;  // 入力欄
-    [SerializeField] ScrollRect scrollRect;      // ScrollView本体
-    [SerializeField] Transform content;          // メッセージを表示する Content オブジェクト
-    [SerializeField] GameObject messagePrefab;   // メッセージのPrefab
+    [SerializeField] InputField _inputField;  // 入力欄
+    [SerializeField] ScrollRect _scrollRect;      // ScrollView本体
+    [SerializeField] Transform _content;          // メッセージを表示する Content オブジェクト
+    [SerializeField] GameObject _messagePrefab;   // メッセージのPrefab
 
     public void SendMessage()
     {
-        string text = inputField.text;
+        string text = _inputField.text;
         if (string.IsNullOrWhiteSpace(text)) return;
 
         // contentの子としてメッセージプレハブを生成して入力した文字を表示
-        GameObject newMessage = Instantiate(messagePrefab, content);
-        Text messageText = newMessage.GetComponent<Text>();
+        GameObject newMessage = Instantiate(_messagePrefab, _content);
+        Text messageText = newMessage.GetComponentInChildren<Text>();
         messageText.text = text;
-
+        
         // 入力欄をクリア
-        inputField.text = "";
+        _inputField.text = "";
 
         // スクロールを一番下へ
         Canvas.ForceUpdateCanvases();
-        scrollRect.verticalNormalizedPosition = 0f;
+        _scrollRect.verticalNormalizedPosition = 0f;
     }
 }

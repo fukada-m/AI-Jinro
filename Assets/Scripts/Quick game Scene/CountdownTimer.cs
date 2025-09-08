@@ -7,42 +7,42 @@ using System;
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] Text _text; //あと何秒か表示する
-    [SerializeField] float _startTime; // タイマーが何秒か決める
+    // [SerializeField] float _startTime; // タイマーが何秒か決める
 
-    private float _currentTime;
+    // private float _currentTime;
     private Coroutine _countdownCoroutine;
 
     // カウントダウンが終了したことを通知するイベント
-    Subject<bool> noticeEndCount = new Subject<bool>();
-    public IObservable<bool> EndCount => noticeEndCount;
+    Subject<Unit> noticeEndCount = new Subject<Unit>();
+    public IObservable<Unit> EndCount => noticeEndCount;
 
     void Start()
     {
-        _currentTime = _startTime;
-        _text.text = $"あと{Mathf.CeilToInt(_currentTime)}秒";
+        // _currentTime = _startTime;
+        _text.text = "あと8秒";
     }
-    public void StartCountdown()
+    public void StartCountdown(float startTime)
     {
         if (_countdownCoroutine != null)
         {
             StopCoroutine(_countdownCoroutine);
         }
-        _countdownCoroutine = StartCoroutine(CountdownRoutine());
+        _countdownCoroutine = StartCoroutine(CountdownRoutine(startTime));
     }
 
-    private IEnumerator CountdownRoutine()
+    private IEnumerator CountdownRoutine(float startTime)
     {
-        _currentTime = _startTime;
+        float currentTime = startTime;
 
-        while (_currentTime > 0)
+        while (currentTime > 0)
         {
-            _text.text = $"あと{Mathf.CeilToInt(_currentTime)}秒";
+            _text.text = $"あと{Mathf.CeilToInt(currentTime)}秒";
             yield return null; // 1フレーム待つ
-            _currentTime -= Time.deltaTime;
+            currentTime -= Time.deltaTime;
         }
 
         _text.text = "終了";
-        noticeEndCount.OnNext(false); //カウントダウン終了したことを通知
+        noticeEndCount.OnNext(Unit.Default); //カウントダウン終了したことを通知
     }
     
 }
