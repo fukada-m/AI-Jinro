@@ -19,7 +19,7 @@ public class CountdownTimer : MonoBehaviour
     void Start()
     {
         // _currentTime = _startTime;
-        _text.text = "あと8秒";
+        _text.text = "スタート！！";
     }
     public void StartCountdown(float startTime)
     {
