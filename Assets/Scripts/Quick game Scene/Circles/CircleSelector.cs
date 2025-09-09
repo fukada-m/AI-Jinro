@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CircleSelector : MonoBehaviour
 {
-    public int CurrentCircle;
+    public int CurrentCircle{ get; private set; }
     [SerializeField] Vector2 _bigSize; // 拡大したときのサイズ
     [SerializeField] Circle[] _circles = new Circle[7]; // 拡大縮小を管理する丸が入った配列
 
