@@ -16,6 +16,7 @@ public class PhaseController : MonoBehaviour
     [SerializeField] int _chatTime; // チャットフェーズの時間
     [SerializeField] int _resultTime; //結果発表フェーズの時間
     [SerializeField] Button _voteButton; //投票ボタン
+    [SerializeField] Text _phaseText; // 現在のフェーズを表示するテキスト
     string _currentPhase;
 
     void Start()
@@ -50,8 +51,9 @@ public class PhaseController : MonoBehaviour
         _currentPhase = "お題";
         _messageContext.SetState(_subjectState); // お題ステート
         _countdownTimer.StartCountdown(_subjectTime); // カウントダウンスタート
-        _flashMessage.ShowMessage("お題に答えよう");
+        _flashMessage.ShowMessage("お題に回答しよう");
         _voteButton.gameObject.SetActive(false); // 投票ボタンを非アクティブ化
+        _phaseText.text = "お題に回答しよう";
     }
     // チャットフェーズに遷移
     void ToChatPhase()
@@ -60,6 +62,8 @@ public class PhaseController : MonoBehaviour
         _messageContext.SetState(_chatState); // チャットステート
         _countdownTimer.StartCountdown(_chatTime); //カウントダウンスタート
         _flashMessage.ShowMessage("誰がAIなのかチャットで話し合おう");
+        _phaseText.text = "チャットで話し合おう";
+
     }
 
     // 投票フェーズに遷移
@@ -69,6 +73,7 @@ public class PhaseController : MonoBehaviour
         _messageContext.SetState(_voteState); // 投票ステート
         _countdownTimer.StartCountdown(_resultTime); //カウントダウンスタート
         _flashMessage.ShowMessage("人間だと思うプレイヤーに投票しよう");
+        _phaseText.text = "投票タイム";
         _voteButton.gameObject.SetActive(true); // 投票ボタンをアクティブ化
     }
 
@@ -78,6 +83,7 @@ public class PhaseController : MonoBehaviour
         _currentPhase = "結果発表";
         _messageContext.SetState(_resultState); // 結果発表ステート
         _flashMessage.ShowMessage("結果発表！！");
+        _phaseText.text = "結果発表中";
         _voteButton.gameObject.SetActive(false); // 投票ボタンを非アクティブ化
     }
 }
