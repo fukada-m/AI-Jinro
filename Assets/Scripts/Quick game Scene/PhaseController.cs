@@ -48,6 +48,7 @@ public class PhaseController : MonoBehaviour
         _messageContext.SetState(_subjectState); // お題ステート
         _countdownTimer.StartCountdown(_subjectTime); // カウントダウンスタート
         _flashMessage.ShowMessage("お題に答えよう");
+        _voteButton.gameObject.SetActive(false); // 投票ボタンを非アクティブ
     }
     // チャットフェーズに遷移
     void ChangeChatPhase()
@@ -63,6 +64,8 @@ public class PhaseController : MonoBehaviour
     {
         _currentPhase = "投票";
         _messageContext.SetState(_voteState);
-        _flashMessage.ShowMessage("AIだと思うプレイヤーに投票しよう");
+        _flashMessage.ShowMessage("人間だと思うプレイヤーに投票しよう");
+        _voteButton.gameObject.SetActive(true); // 投票ボタンをアクティブ化
+
     }
 }
