@@ -1,5 +1,6 @@
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PhaseController : MonoBehaviour
 {
@@ -8,17 +9,16 @@ public class PhaseController : MonoBehaviour
     [SerializeField] MessageContext _messageContext;  // メッセージのステートパターン
     [SerializeField] ChatState _chatState; // チャットステート
     [SerializeField] SubjectState _subjectState; // お題ステート
+    [SerializeField] VoteState _voteState; // 投票ステート
     [SerializeField] int _subjectTime; // お題フェーズの時間
     [SerializeField] int _chatTime; // チャットフェーズの時間
-    string _currentPhase; 
+    [SerializeField] Button _voteButton; //投票ボタン
+    string _currentPhase;
 
     void Start()
     {
-        _currentPhase = "お題";
         _countdownTimer.EndCount.Subscribe(isCounting => ChangePhase()).AddTo(this); // カウントダウンが終わると通知されるイベントを購読
-        _countdownTimer.StartCountdown(_subjectTime); // カウントダウンスタート
-        _messageContext.SetState(_subjectState); // 最初はお題ステート
-        _flashMessage.ShowMessage("お題に答えよう");
+        ChangeSubjectPhase(); //お題フェーズでスタート
     }
 
     // フェーズは お題 ⇒ チャット⇒ 投票 ⇒ 結果発表
@@ -27,14 +27,12 @@ public class PhaseController : MonoBehaviour
         // お題 ⇒ チャット
         if (_currentPhase == "お題")
         {
-            ChangeChatState();
-            _currentPhase = "チャット";
+            ChangeChatPhase();
         }
         // チャット ⇒ 投票
         else if (_currentPhase == "チャット")
         {
-            _currentPhase = "投票";
-
+            ChangeVotePhase();
         }
         // 投票 ⇒ 結果発表
         else if (_currentPhase == "投票")
@@ -43,11 +41,28 @@ public class PhaseController : MonoBehaviour
         }
     }
 
-    // チャットステートに遷移
-    void ChangeChatState()
+    // お題フェーズに遷移
+    void ChangeSubjectPhase()
     {
-        _messageContext.SetState(_chatState);
+        _currentPhase = "お題";
+        _messageContext.SetState(_subjectState); // お題ステート
+        _countdownTimer.StartCountdown(_subjectTime); // カウントダウンスタート
+        _flashMessage.ShowMessage("お題に答えよう");
+    }
+    // チャットフェーズに遷移
+    void ChangeChatPhase()
+    {
+        _currentPhase = "チャット";
+        _messageContext.SetState(_chatState); // チャットステート
+        _countdownTimer.StartCountdown(_chatTime); //カウントダウンスタート
         _flashMessage.ShowMessage("誰がAIなのかチャットで話し合おう");
-        _countdownTimer.StartCountdown(_chatTime);
+    }
+
+    // 投票フェーズに遷移
+    void ChangeVotePhase()
+    {
+        _currentPhase = "投票";
+        _messageContext.SetState(_voteState);
+        _flashMessage.ShowMessage("AIだと思うプレイヤーに投票しよう");
     }
 }
