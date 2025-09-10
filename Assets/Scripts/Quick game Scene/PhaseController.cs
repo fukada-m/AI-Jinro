@@ -2,6 +2,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
+// フェーズを管理する お題 ⇒ チャット⇒ 投票 ⇒ 結果発表 のループ
 public class PhaseController : MonoBehaviour
 {
     [SerializeField] FlashMessage _flashMessage; // フラッシュメージ
@@ -10,15 +11,17 @@ public class PhaseController : MonoBehaviour
     [SerializeField] ChatState _chatState; // チャットステート
     [SerializeField] SubjectState _subjectState; // お題ステート
     [SerializeField] VoteState _voteState; // 投票ステート
+    [SerializeField] ResultState _resultState; // 結果発表ステート
     [SerializeField] int _subjectTime; // お題フェーズの時間
     [SerializeField] int _chatTime; // チャットフェーズの時間
+    [SerializeField] int _resultTime; //結果発表フェーズの時間
     [SerializeField] Button _voteButton; //投票ボタン
     string _currentPhase;
 
     void Start()
     {
         _countdownTimer.EndCount.Subscribe(isCounting => ChangePhase()).AddTo(this); // カウントダウンが終わると通知されるイベントを購読
-        ChangeSubjectPhase(); //お題フェーズでスタート
+        ToSubjectPhase(); //お題フェーズでスタート
     }
 
     // フェーズは お題 ⇒ チャット⇒ 投票 ⇒ 結果発表
@@ -27,31 +30,31 @@ public class PhaseController : MonoBehaviour
         // お題 ⇒ チャット
         if (_currentPhase == "お題")
         {
-            ChangeChatPhase();
+            ToChatPhase();
         }
         // チャット ⇒ 投票
         else if (_currentPhase == "チャット")
         {
-            ChangeVotePhase();
+            ToVotePhase();
         }
         // 投票 ⇒ 結果発表
         else if (_currentPhase == "投票")
         {
-
+            ToResultPhase();
         }
     }
 
     // お題フェーズに遷移
-    void ChangeSubjectPhase()
+    void ToSubjectPhase()
     {
         _currentPhase = "お題";
         _messageContext.SetState(_subjectState); // お題ステート
         _countdownTimer.StartCountdown(_subjectTime); // カウントダウンスタート
         _flashMessage.ShowMessage("お題に答えよう");
-        _voteButton.gameObject.SetActive(false); // 投票ボタンを非アクティブ
+        _voteButton.gameObject.SetActive(false); // 投票ボタンを非アクティブ化
     }
     // チャットフェーズに遷移
-    void ChangeChatPhase()
+    void ToChatPhase()
     {
         _currentPhase = "チャット";
         _messageContext.SetState(_chatState); // チャットステート
@@ -60,12 +63,21 @@ public class PhaseController : MonoBehaviour
     }
 
     // 投票フェーズに遷移
-    void ChangeVotePhase()
+    void ToVotePhase()
     {
         _currentPhase = "投票";
-        _messageContext.SetState(_voteState);
+        _messageContext.SetState(_voteState); // 投票ステート
+        _countdownTimer.StartCountdown(_resultTime); //カウントダウンスタート
         _flashMessage.ShowMessage("人間だと思うプレイヤーに投票しよう");
         _voteButton.gameObject.SetActive(true); // 投票ボタンをアクティブ化
+    }
 
+    // 結果発表フェーズに遷移
+    void ToResultPhase()
+    {
+        _currentPhase = "結果発表";
+        _messageContext.SetState(_resultState); // 結果発表ステート
+        _flashMessage.ShowMessage("結果発表！！");
+        _voteButton.gameObject.SetActive(false); // 投票ボタンを非アクティブ化
     }
 }
