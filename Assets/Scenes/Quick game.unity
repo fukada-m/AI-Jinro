@@ -1255,7 +1255,7 @@ GameObject:
   - component: {fileID: 810498994}
   - component: {fileID: 810498995}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1273,7 +1273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c49f5baf358ca4b9dace701768e5c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _board: {fileID: 810498992}
   _flashMessage: {fileID: 810498994}
   _countdownTimer: {fileID: 810498993}
   _messageContext: {fileID: 810498990}
@@ -1403,6 +1402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _circleSelector: {fileID: 526127888}
+  _flashMessage: {fileID: 810498994}
 --- !u!1 &820319863
 GameObject:
   m_ObjectHideFlags: 0
