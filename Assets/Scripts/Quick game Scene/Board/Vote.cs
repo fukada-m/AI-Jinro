@@ -9,6 +9,7 @@ public class Vote : MonoBehaviour
     [SerializeField] GameObject _voteButton;
     [SerializeField] Circle[] _circles = new Circle[7];
     bool isClicked = false;
+    bool _isLocked = false;
     int[] _results = new int[7];
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,6 +46,9 @@ public class Vote : MonoBehaviour
             isClicked = true;
             _flashMessage.ShowMessage($"プレイヤー{index}に投票しました");
         }
+        // 投票したらボタンはずっと非アクティブ
+        _voteButton.SetActive(false);
+        _isLocked = true;
     }
     // 今のフェーズを参考に表示 / 非表示を切り替える
     void UpdateSetActive()
@@ -56,6 +60,8 @@ public class Vote : MonoBehaviour
             _voteButton.SetActive(false);
             return;
         }
+
+        if (_isLocked == true) return; // ロック中はずっと非アクティブ
 
         int CurrentCircle = _board.CurrentIndex;
         // 掲示板の表示がお題とプレイヤー1でなければアクティブ
