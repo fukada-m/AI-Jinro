@@ -34,10 +34,11 @@ public class Board : MonoBehaviour
             if (i == 0) _titleTextArr[i] = "お題";
             if (i > 0) _titleTextArr[i] = $"プレイヤー{i}";
         }
+        Thinking();
     }
 
     // 本来はAIに考えさせてからテキストをセットするためStartより後のタイミングで実行する
-    public void Initialize()
+    void Thinking()
     {
         // とりあえずお題は固定
         _mainTextArr[0] = "日本人の国民性";
