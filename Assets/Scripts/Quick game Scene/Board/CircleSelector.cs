@@ -9,8 +9,9 @@ public class CircleSelector : MonoBehaviour
 
     void Start()
     {
+        // 初期値はお題
         CurrentCircle = 0;
-        _circles[0].ChangeSize(_bigSize); // 初期表示時はお題の丸を拡大
+        _circles[0].ChangeSize(_bigSize);
 
         // 7個のサークルのイベントを購読
         // イベントの通知を受け取ったら一度全ての丸を初期サイズに戻してからクリックされた丸だけ拡大する
