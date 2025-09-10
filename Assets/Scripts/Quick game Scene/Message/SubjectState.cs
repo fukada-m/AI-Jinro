@@ -12,21 +12,22 @@ public class SubjectState : MonoBehaviour, IMessageState
     // メッセージを掲示板に送って入力欄をクリア
     public void SendMessage()
     {
-        if (!_isLocked)
-        {
-            string text = inputField.text;
-            if (string.IsNullOrWhiteSpace(text)) return;
-
-            _board.SetText(1, text);
-
-            inputField.text = ""; // 入力欄をクリア
-            _flashMessage.ShowMessage("お題に回答しました");
-            _isLocked = true;
-        }
-        else
+        if (_isLocked)
         {
             inputField.text = ""; // 入力欄をクリア
             _flashMessage.ShowMessage("既に回答済みです");
+        }
+        else
+        {
+            // 入力された文字列を取得
+            string text = inputField.text;
+            if (string.IsNullOrWhiteSpace(text)) return;
+
+            _board.SetText(1, text); // プレイヤー1の回答として掲示板にセット
+
+            inputField.text = ""; // 入力欄をクリア
+            _flashMessage.ShowMessage("お題に回答しました");
+            _isLocked = true; // 投稿済み
         }
     }
 }
