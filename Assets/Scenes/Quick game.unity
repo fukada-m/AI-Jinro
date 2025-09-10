@@ -1250,6 +1250,8 @@ GameObject:
   - component: {fileID: 810498990}
   - component: {fileID: 810498988}
   - component: {fileID: 810498991}
+  - component: {fileID: 810498996}
+  - component: {fileID: 810498997}
   - component: {fileID: 810498992}
   - component: {fileID: 810498993}
   - component: {fileID: 810498994}
@@ -1278,8 +1280,12 @@ MonoBehaviour:
   _messageContext: {fileID: 810498990}
   _chatState: {fileID: 810498991}
   _subjectState: {fileID: 810498988}
+  _voteState: {fileID: 810498996}
+  _resultState: {fileID: 810498997}
   _subjectTime: 1
-  _chatTime: 120
+  _chatTime: 3
+  _resultTime: 5
+  _voteButton: {fileID: 1318503073}
 --- !u!4 &810498987
 Transform:
   m_ObjectHideFlags: 0
@@ -1402,6 +1408,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _circleSelector: {fileID: 526127888}
+  _flashMessage: {fileID: 810498994}
+--- !u!114 &810498996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810498985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e02004270d9c14db7a16a636ffbea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashMessage: {fileID: 810498994}
+--- !u!114 &810498997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810498985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c46ea5e486d8348b6b114291e22c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _flashMessage: {fileID: 810498994}
 --- !u!1 &820319863
 GameObject:
