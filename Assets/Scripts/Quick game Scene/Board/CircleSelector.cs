@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class CircleSelector : MonoBehaviour
 {
-    public int CurrentCircle{ get; private set; }
+    // public int CurrentCircle{ get; private set; }
     [SerializeField] Vector2 _bigSize; // 拡大したときのサイズ
     [SerializeField] Circle[] _circles = new Circle[7]; // 拡大縮小を管理する丸が入った配列
+    [SerializeField] Board _board;
 
     void Start()
     {
-        // 初期値はお題
-        CurrentCircle = 0;
+        // // 初期値はお題
+        // CurrentCircle = 0;
         _circles[0].ChangeSize(_bigSize);
 
         // 7個のサークルのイベントを購読
@@ -21,7 +22,7 @@ public class CircleSelector : MonoBehaviour
                 .Subscribe(circle =>
                 {
                     Select(circle);
-                    CurrentCircle = circle.Index;
+                    // CurrentCircle = circle.Index;
                 })
                 .AddTo(this);
         }
@@ -31,17 +32,16 @@ public class CircleSelector : MonoBehaviour
     public void Next()
     {
         // 6の次は無い
-        if (CurrentCircle < 6) CurrentCircle++;
-        Select(_circles[CurrentCircle]);
-
+        // if (CurrentCircle < 6) CurrentCircle++;
+        Select(_circles[_board.CurrentIndex]);
     }
 
     // ひとつ前の丸を選択する
     public void Back()
     {
         // 0より前は無い
-        if (CurrentCircle > 0) CurrentCircle--;
-        Select(_circles[CurrentCircle]);
+        // if (CurrentCircle > 0) CurrentCircle--;
+        Select(_circles[_board.CurrentIndex]);
     }
 
     // 一度全ての丸を初期サイズに戻してから選択された丸だけ拡大する

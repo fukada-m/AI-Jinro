@@ -4,7 +4,7 @@ using UniRx;
 public class Vote : MonoBehaviour
 {
     [SerializeField] PhaseController _phaseController;
-    [SerializeField] CircleSelector _circleSelector;
+    [SerializeField] Board _board;
     [SerializeField] FlashMessage _flashMessage;
     [SerializeField] GameObject _voteButton;
     [SerializeField] Circle[] _circles = new Circle[7];
@@ -40,7 +40,7 @@ public class Vote : MonoBehaviour
         }
         else
         {
-            int index = _circleSelector.CurrentCircle;
+            int index = _board.CurrentIndex;
             _results[index]++;
             isClicked = true;
             _flashMessage.ShowMessage($"プレイヤー{index}に投票しました");
@@ -57,7 +57,7 @@ public class Vote : MonoBehaviour
             return;
         }
 
-        int CurrentCircle = _circleSelector.CurrentCircle;
+        int CurrentCircle = _board.CurrentIndex;
         // 掲示板の表示がお題とプレイヤー1でなければアクティブ
         if (CurrentCircle == 0 || CurrentCircle == 1)
         {
