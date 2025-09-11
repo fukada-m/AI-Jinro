@@ -22,10 +22,7 @@ public abstract class PhaseBase : MonoBehaviour
         _messageContext = GetComponent<MessageContext>();
     }
 
-<<<<<<< HEAD
     // カウントダウンを開始して、フラッシュメッセージを流して、フェーズテキストを表示する
-=======
->>>>>>> 52748b358108569bc8e1a7a9efd4c3041501f440
     public virtual void ChangePhase()
     {
         _countdownTimer.StartCountdown(_time);
@@ -33,9 +30,5 @@ public abstract class PhaseBase : MonoBehaviour
         _phaseText.text = _text;
     }
 
-<<<<<<< HEAD
     protected abstract void SetMessageState(); // 各ステートを継承先でセットする
-=======
-    protected abstract void SetMessageState();
->>>>>>> 52748b358108569bc8e1a7a9efd4c3041501f440
 }
