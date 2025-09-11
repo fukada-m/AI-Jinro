@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public abstract class PhaseBase : MonoBehaviour
 {
     [SerializeField] protected int _time; // フェーズの制限時間
-    protected CountdownTimer _countdownTimer; // 残り秒数を表示する
+    protected CountdownTimer _countdownTimer; // 残り秒数を表示するタイマー
 
     [SerializeField] protected string _message; // フラッシュメッセージに表示する内容
     protected FlashMessage _flashMessage; // フラッシュメッセージ
@@ -22,12 +22,19 @@ public abstract class PhaseBase : MonoBehaviour
         _messageContext = GetComponent<MessageContext>();
     }
 
-    // カウントダウンを開始して、フラッシュメッセージを流して、フェーズテキストを表示する
+    // カウントダウンを開始して、フラッシュメッセージを流して、フェーズテキストを表示して、AIがアクションを行う
     public virtual void ChangePhase()
     {
         _countdownTimer.StartCountdown(_time);
         _flashMessage.ShowMessage(_message);
         _phaseText.text = _text;
+        AiAction();
+    }
+
+    // このフェーズで行うAIのアクション
+    protected virtual void AiAction()
+    {
+        Debug.Log($"{this.GetType().Name}にAIのアクションはありません");
     }
 
     protected abstract void SetMessageState(); // 各ステートを継承先でセットする
