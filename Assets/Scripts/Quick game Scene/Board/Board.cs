@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
     void Start()
     {
 
+        Thinking();
         // イベントを購読。丸がクリックされたら表示される内容を丸に対応するものに変更する処理
         foreach (var circle in _circles)
         {
@@ -27,14 +28,13 @@ public class Board : MonoBehaviour
                 .AddTo(this);
         }
 
-        // ボードのタイトルに文字列をセットする
+        // ボードにタイトルをセット
         for (int i = 0; i < _titleTextArr.Length; i++)
         {
-            // 一個目の丸はお題、残りはプレイヤー名
+            // 1ページ目はお題、残りはプレイヤー名の回答
             if (i == 0) _titleTextArr[i] = "お題";
             if (i > 0) _titleTextArr[i] = $"プレイヤー{i}の回答";
         }
-        Thinking(); // お題の答えを考える
     }
 
     // ボードに文字列をセットし表示するメソッド
@@ -45,6 +45,7 @@ public class Board : MonoBehaviour
         Display(i);
     }
 
+    // 次のページを表示する
     public void Next()
     {
         // 6の次は無い
@@ -53,9 +54,10 @@ public class Board : MonoBehaviour
         _circles[CurrentIndex].OnClick();
     }
 
+    // 前のページを表示する
     public void Back()
     {
-        // 0より小さくならない
+        // 0より前はない
         if (CurrentIndex > 0) CurrentIndex--;
         Display(CurrentIndex);
         _circles[CurrentIndex].OnClick();
@@ -76,6 +78,8 @@ public class Board : MonoBehaviour
         _mainText.text = _mainTextArr[i];
         _titleText.text = _titleTextArr[i];
     }
+
+    // お題を返す
     public string GetSubject()
     {
         return _mainTextArr[0];
