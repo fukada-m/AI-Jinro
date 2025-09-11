@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class AiManager : MonoBehaviour
 {
-    Board _board; //掲示板
+    [SerializeField] Board _board; //掲示板
     Ai[] _AIs = new Ai[6]; // クイックゲームだとAIは5人
 
-    void Awake()
-    {
-        _board = GetComponent<Board>();
-    }
     void Start()
     {
         // AIを5体作成
@@ -16,10 +12,13 @@ public class AiManager : MonoBehaviour
         {
             _AIs[i] = new Ai();
         }
-        
-        int index = 2; // AI掲示板の2番目から使う
+    }
+
+    public void CreateAnswer()
+    {
         var subject = _board.GetSubject();
 
+        int index = 2; // AIは掲示板の2番目から使う
         // 一人ずつ回答セットして最後はお題を表示する
         foreach (var ai in _AIs)
         {
