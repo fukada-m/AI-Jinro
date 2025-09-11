@@ -5,9 +5,9 @@ public class SubjectPhase : PhaseBase
 {
     IMessageState _subjectState;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         _subjectState = GetComponent<SubjectState>();
     }
     public override void ChangePhase()

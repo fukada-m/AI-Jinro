@@ -32,7 +32,7 @@ public class Board : MonoBehaviour
         {
             // 一個目の丸はお題、残りはプレイヤー名
             if (i == 0) _titleTextArr[i] = "お題";
-            if (i > 0) _titleTextArr[i] = $"プレイヤー{i}";
+            if (i > 0) _titleTextArr[i] = $"プレイヤー{i}の回答";
         }
         Thinking(); // お題の答えを考える
     }

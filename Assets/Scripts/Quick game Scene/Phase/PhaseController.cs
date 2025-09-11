@@ -10,7 +10,7 @@ public class PhaseController : MonoBehaviour
     VotePhase _votePhase; // 投票フェーズ
     ResultPhase _resultPhase; // 結果発表フェーズ
 
-    void Start()
+    void Awake()
     {
         // カウントダウンが終わったらChangePhaseを実行
         CountdownTimer countdownTimer = GetComponent<CountdownTimer>();
@@ -20,7 +20,9 @@ public class PhaseController : MonoBehaviour
         _chatPhase = GetComponent<ChatPhase>();
         _votePhase = GetComponent<VotePhase>();
         _resultPhase = GetComponent<ResultPhase>();
-
+    }
+    void Start()
+    {
         ToSubjectPhase(); //お題フェーズでスタート
     }
 

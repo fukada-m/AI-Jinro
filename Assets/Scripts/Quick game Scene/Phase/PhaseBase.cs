@@ -15,7 +15,7 @@ public abstract class PhaseBase : MonoBehaviour
 
     protected MessageContext _messageContext; // メッセージの送信先を決めるステートパターン
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         _flashMessage = GetComponent<FlashMessage>();
         _countdownTimer = GetComponent<CountdownTimer>();

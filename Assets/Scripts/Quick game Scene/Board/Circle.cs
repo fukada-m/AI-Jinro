@@ -4,7 +4,7 @@ using System;
 
 public class Circle : MonoBehaviour
 {
-    [SerializeField] RectTransform rect; // 自分の今のサイズ
+    RectTransform rect; // 自分の今のサイズ
     public int Index; // 自分の番号
     Vector2 initialSize;  // 初期サイズを取っておくのに使う
     Subject<Circle> clicked = new Subject<Circle>(); // クリックされたら Circle を渡すイベント
@@ -12,6 +12,7 @@ public class Circle : MonoBehaviour
 
     void Awake()
     {
+        rect = GetComponent<RectTransform>();
         // 現在のサイズを取得して初期サイズとする
         initialSize = rect.sizeDelta;
     }

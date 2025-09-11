@@ -17,7 +17,6 @@ public class CountdownTimer : MonoBehaviour
 
     void Start()
     {
-        // _currentTime = _startTime;
         _text.text = "スタート！！";
     }
 

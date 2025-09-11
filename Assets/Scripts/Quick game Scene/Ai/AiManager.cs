@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class AiManager : MonoBehaviour
 {
-    [SerializeField] Board _board; //掲示板
+    Board _board; //掲示板
     Ai[] _AIs = new Ai[6]; // クイックゲームだとAIは5人
 
+    void Awake()
+    {
+        _board = GetComponent<Board>();
+    }
     void Start()
     {
         // AIを5体作成

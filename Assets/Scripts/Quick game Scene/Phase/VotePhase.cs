@@ -5,9 +5,9 @@ public class VotePhase : PhaseBase
 {
     IMessageState _voteState;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         _voteState = GetComponent<SubjectState>();
     }
 

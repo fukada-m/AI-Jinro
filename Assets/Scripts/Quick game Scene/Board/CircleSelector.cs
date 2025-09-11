@@ -5,8 +5,12 @@ public class CircleSelector : MonoBehaviour
 {
     [SerializeField] Vector2 _bigSize; // 拡大したときのサイズ
     [SerializeField] Circle[] _circles = new Circle[8]; // 拡大縮小を管理する丸が入った配列
-    [SerializeField] Board _board;
+    Board _board;
 
+    void Awake()
+    {
+        _board = GetComponent<Board>();
+    }
     void Start()
     {
         _circles[0].ChangeSize(_bigSize);

@@ -5,9 +5,9 @@ public class ResultPhase : PhaseBase
 {
     IMessageState _resultState;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         _resultState = GetComponent<ResultState>();
     }
 

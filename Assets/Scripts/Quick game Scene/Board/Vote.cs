@@ -5,14 +5,22 @@ using System;
 
 public class Vote : MonoBehaviour
 {
-    [SerializeField] PhaseController _phaseController;
-    [SerializeField] Board _board;
-    [SerializeField] FlashMessage _flashMessage;
+    PhaseController _phaseController;
+    Board _board;
+    FlashMessage _flashMessage;
     [SerializeField] GameObject _voteButton;
     [SerializeField] Circle[] _circles = new Circle[8];
     bool isClicked = false;
     bool _isLocked = false;
     int[] _results = new int[8];
+
+    void Awake()
+    {
+        _phaseController = GetComponent<PhaseController>();
+        _board = GetComponent<Board>();
+        _flashMessage = GetComponent<FlashMessage>();
+
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
