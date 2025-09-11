@@ -1,5 +1,7 @@
 using UnityEngine;
 using UniRx;
+using System.Linq;
+using System;
 
 public class Vote : MonoBehaviour
 {
@@ -7,10 +9,10 @@ public class Vote : MonoBehaviour
     [SerializeField] Board _board;
     [SerializeField] FlashMessage _flashMessage;
     [SerializeField] GameObject _voteButton;
-    [SerializeField] Circle[] _circles = new Circle[7];
+    [SerializeField] Circle[] _circles = new Circle[8];
     bool isClicked = false;
     bool _isLocked = false;
-    int[] _results = new int[7];
+    int[] _results = new int[8];
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,6 +52,14 @@ public class Vote : MonoBehaviour
         _voteButton.SetActive(false);
         _isLocked = true;
     }
+
+    // 投票結果が同数の場合は一番小さい添え字になる
+    public int GetTotal()
+    {
+        int max = _results.Max();
+        return Array.IndexOf(_results, max);
+    }
+
     // 今のフェーズを参考に表示 / 非表示を切り替える
     void UpdateSetActive()
     {
@@ -72,6 +82,8 @@ public class Vote : MonoBehaviour
         else
         {
             _voteButton.SetActive(true);
-        } 
+        }
     }
+    
+
 }

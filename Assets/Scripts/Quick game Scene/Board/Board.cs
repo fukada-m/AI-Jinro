@@ -8,9 +8,9 @@ public class Board : MonoBehaviour
     public int CurrentIndex = 0; // 今どのボードを表示しているか管理する変数
     [SerializeField] Text _titleText; // ボードに表示されるタイトル
     [SerializeField] Text _mainText; // ボードに表示される本文
-    [SerializeField] Circle[] _circles = new Circle[7]; // 丸の配列 7 個ある
-    string[] _mainTextArr = new string[7]; // ボードに表示する本文の配列 7 個ある
-    string[] _titleTextArr = new string[7]; // ボードに表示するタイトルの配列 7 個ある
+    [SerializeField] Circle[] _circles = new Circle[8]; // 丸の配列 8 個ある
+    string[] _mainTextArr = new string[8]; // ボードに表示する本文の配列 8 個ある
+    string[] _titleTextArr = new string[8]; // ボードに表示するタイトルの配列 8 個ある
 
     void Start()
     {
@@ -48,7 +48,7 @@ public class Board : MonoBehaviour
     public void Next()
     {
         // 6の次は無い
-        if (CurrentIndex < 6) CurrentIndex++;
+        if (CurrentIndex < 7) CurrentIndex++;
         Display(CurrentIndex);
         _circles[CurrentIndex].OnClick();
     }
@@ -61,7 +61,7 @@ public class Board : MonoBehaviour
         _circles[CurrentIndex].OnClick();
     }
 
-    // 本来はAIに考えさせてからテキストをセットするためStartより後のタイミングで実行する
+    // 本来はAIに考えさせてからテキストをセットする
     void Thinking()
     {
         // とりあえずお題は固定

@@ -3,7 +3,7 @@ using UnityEngine;
 public class AiManager : MonoBehaviour
 {
     [SerializeField] Board _board; //掲示板
-    Ai[] _AIs = new Ai[5]; // クイックゲームだとAIは5人
+    Ai[] _AIs = new Ai[6]; // クイックゲームだとAIは5人
 
     void Start()
     {
