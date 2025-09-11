@@ -4,12 +4,11 @@ using System.Collections;
 using UniRx;
 using System;
 
+// 各フェーズでカウントダウンを行う
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] Text _text; //あと何秒か表示する
-    // [SerializeField] float _startTime; // タイマーが何秒か決める
 
-    // private float _currentTime;
     private Coroutine _countdownCoroutine;
 
     // カウントダウンが終了したことを通知するイベント
@@ -21,6 +20,7 @@ public class CountdownTimer : MonoBehaviour
         // _currentTime = _startTime;
         _text.text = "スタート！！";
     }
+
     public void StartCountdown(float startTime)
     {
         if (_countdownCoroutine != null)
@@ -44,5 +44,5 @@ public class CountdownTimer : MonoBehaviour
         _text.text = "終了";
         noticeEndCount.OnNext(Unit.Default); //カウントダウン終了したことを通知
     }
-    
+
 }
