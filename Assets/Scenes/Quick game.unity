@@ -940,7 +940,6 @@ MonoBehaviour:
   - {fileID: 2030200245}
   - {fileID: 1743202013}
   - {fileID: 1067364712}
-  _board: {fileID: 810498992}
 --- !u!1 &546567126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,9 +1403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6a371b74e822e43a4bbe8d2f1a9ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _phaseController: {fileID: 810498986}
-  _board: {fileID: 810498992}
-  _flashMessage: {fileID: 810498994}
   _voteButton: {fileID: 1318503071}
   _circles:
   - {fileID: 1907048666}
@@ -1429,7 +1425,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e02004270d9c14db7a16a636ffbea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flashMessage: {fileID: 810498994}
 --- !u!114 &810498997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,7 +1437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c46ea5e486d8348b6b114291e22c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flashMessage: {fileID: 810498994}
 --- !u!114 &810498998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,10 +1449,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d84350c7d82906448494c000a76ff96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 3
+  _time: 2
   _message: "\u304A\u984C\u306B\u56DE\u7B54\u3057\u3088\u3046"
   _text: "\u304A\u984C\u306B\u56DE\u7B54\u3057\u3088\u3046"
   _phaseText: {fileID: 1030182681}
+  _aiManager: {fileID: 1640308498}
 --- !u!114 &810498999
 MonoBehaviour:
   m_ObjectHideFlags: 0
