@@ -1,3 +1,4 @@
+using System.Collections;
 using UniRx;
 using UnityEngine;
 
@@ -23,7 +24,15 @@ public class PhaseController : MonoBehaviour
     }
     void Start()
     {
-        ToSubjectPhase(); //お題フェーズでスタート
+        StartCoroutine(StartGame()); // お題フェーズでスタート
+    }
+
+    // 1フレーム待ってからお題フェーズでスタート
+    IEnumerator StartGame()
+    {
+        yield return null; // 1フレーム待つ
+
+        ToSubjectPhase(); 
     }
 
     // カウントダウンが終わったらフェーズを お題 ⇒ チャット⇒ 投票 ⇒ 結果発表 の順に移行
