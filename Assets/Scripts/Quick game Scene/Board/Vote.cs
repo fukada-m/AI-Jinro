@@ -3,16 +3,16 @@ using UniRx;
 using System.Linq;
 using System;
 
+// 投票を管理するクラス
 public class Vote : MonoBehaviour
 {
     PhaseController _phaseController;
     Board _board;
     FlashMessage _flashMessage;
     [SerializeField] GameObject _voteButton;
-    [SerializeField] Circle[] _circles = new Circle[8];
-    bool isClicked = false;
-    bool _isLocked = false;
-    int[] _results = new int[8];
+    [SerializeField] Circle[] _circles = new Circle[8]; //イベント購読用
+    bool _isLocked = false; // すでに投票したかどうか
+    int[] _results = new int[8]; // 投票結果を格納
 
     void Awake()
     {
@@ -22,7 +22,6 @@ public class Vote : MonoBehaviour
 
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // 全ての要素を0で初期化
@@ -35,27 +34,19 @@ public class Vote : MonoBehaviour
             circle.OnClicked
                 .Subscribe(circle =>
                 {
-                    UpdateSetActive();
+                    CheckActiveVoteButton(); // 投票ボタンを表示するかチェックする
                 })
                 .AddTo(this);
         }
-        UpdateSetActive();
+        CheckActiveVoteButton(); // 投票ボタンを表示するかチェックする
     }
 
     // クリックされたプレイヤーに投票する
     public void OnClick()
     {
-        if (isClicked)
-        {
-            _flashMessage.ShowMessage("投票は一度しか行えません");
-        }
-        else
-        {
-            int index = _board.CurrentIndex;
-            _results[index]++;
-            isClicked = true;
-            _flashMessage.ShowMessage($"プレイヤー{index}に投票しました");
-        }
+        int index = _board.CurrentIndex;
+        _results[index]++;
+        _flashMessage.ShowMessage($"プレイヤー{index}に投票しました");
         // 投票したらボタンはずっと非アクティブ
         _voteButton.SetActive(false);
         _isLocked = true;
@@ -68,8 +59,8 @@ public class Vote : MonoBehaviour
         return Array.IndexOf(_results, max);
     }
 
-    // 今のフェーズを参考に表示 / 非表示を切り替える
-    void UpdateSetActive()
+    // 投票フェーズでのみ投票ボタンを表示する
+    void CheckActiveVoteButton()
     {
         string currentPhase = _phaseController.CurrentPhase;
         //投票フェーズでなければ非アクティブ
@@ -92,6 +83,6 @@ public class Vote : MonoBehaviour
             _voteButton.SetActive(true);
         }
     }
-    
+
 
 }
