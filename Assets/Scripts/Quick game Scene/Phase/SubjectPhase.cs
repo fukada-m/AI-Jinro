@@ -4,12 +4,15 @@ using UnityEngine;
 public class SubjectPhase : PhaseBase
 {
     IMessageState _subjectState;
-    [SerializeField] AiManager _aiManager;
+    AiManager _aiManager;
 
     protected override void Awake()
     {
         base.Awake();
         _subjectState = GetComponent<SubjectState>();
+        if (_subjectState == null) Debug.LogError("SubjectStateクラスがGetComponentできませんでした");
+        _aiManager = GetComponent<AiManager>();
+        if (_aiManager == null) Debug.LogError("AiManagerクラスがGetComponentできませんでした");
     }
 
     // AIにお題への回答を生成させる
