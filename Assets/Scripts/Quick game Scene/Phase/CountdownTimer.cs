@@ -12,8 +12,8 @@ public class CountdownTimer : MonoBehaviour
     private Coroutine _countdownCoroutine;
 
     // カウントダウンが終了したことを通知するイベント
-    Subject<Unit> noticeEndCount = new Subject<Unit>();
-    public IObservable<Unit> EndCount => noticeEndCount;
+    Subject<Unit> _noticeEndCount = new Subject<Unit>();
+    public IObservable<Unit> EndCount => _noticeEndCount;
 
     void Start()
     {
@@ -29,6 +29,18 @@ public class CountdownTimer : MonoBehaviour
         _countdownCoroutine = StartCoroutine(CountdownRoutine(startTime));
     }
 
+    // カウントダウンを強制終了
+    public void ForceEnd()
+    {
+        if (_countdownCoroutine != null)
+        {
+            StopCoroutine(_countdownCoroutine);
+            _countdownCoroutine = null;
+        }
+        _text.text = "終了";
+        _noticeEndCount.OnNext(Unit.Default); //カウントダウン終了したことを通知
+    }
+
     private IEnumerator CountdownRoutine(float startTime)
     {
         float currentTime = startTime;
@@ -41,7 +53,7 @@ public class CountdownTimer : MonoBehaviour
         }
 
         _text.text = "終了";
-        noticeEndCount.OnNext(Unit.Default); //カウントダウン終了したことを通知
+        _noticeEndCount.OnNext(Unit.Default); //カウントダウン終了したことを通知
     }
 
 }

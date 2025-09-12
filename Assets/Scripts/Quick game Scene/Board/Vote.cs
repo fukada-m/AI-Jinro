@@ -57,8 +57,14 @@ public class Vote : MonoBehaviour
         _results[i]++;
     }
 
+    // 投票数を返す
+    public int GetVoteCount()
+    {
+        return _results.Sum();
+    }
+
     // 投票結果が同数の場合は一番小さい添え字になる
-    public int GetTotal()
+    public int GetResult()
     {
         int max = _results.Max();
         int result = Array.IndexOf(_results, max);

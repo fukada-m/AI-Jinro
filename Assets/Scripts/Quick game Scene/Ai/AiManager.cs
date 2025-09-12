@@ -5,7 +5,6 @@ public class AiManager : MonoBehaviour
     Board _board; //掲示板
     Vote _vote; // 投票
     Ai[] _AIs = new Ai[6]; // クイックゲームだとAIは5人
-    public bool VoteDone { get; set; } = false;
 
     void Awake()
     {
@@ -46,7 +45,6 @@ public class AiManager : MonoBehaviour
             _vote.AiVote(playerNum);
             Debug.Log($"プレイヤー{i+2}はプレイヤー{playerNum}に投票しました");
         }
-        VoteDone = true;
     }
 
 }

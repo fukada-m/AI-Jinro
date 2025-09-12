@@ -28,10 +28,9 @@ public class VotePhase : PhaseBase
 
     void Update()
     {
-        if (_aiManager.VoteDone)
+        if (_vote.GetVoteCount() == 7)
         {
-            Debug.Log("投票完了");
-            _aiManager.VoteDone = false;
+            _countdownTimer.ForceEnd(); // フェーズの強制終了
         }
     }
 
