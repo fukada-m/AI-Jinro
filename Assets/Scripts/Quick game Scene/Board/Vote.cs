@@ -12,7 +12,7 @@ public class Vote : MonoBehaviour
     [SerializeField] GameObject _voteButton;
     [SerializeField] Circle[] _circles = new Circle[8]; //イベント購読用
     bool _isLocked = false; // すでに投票したかどうか
-    int[] _results = new int[8]; // 投票結果を格納
+    int[] _results = new int[8]; // 投票結果を格納 添え字がそのままプレイヤー番号になる。よって0は使わない
 
     void Awake()
     {
