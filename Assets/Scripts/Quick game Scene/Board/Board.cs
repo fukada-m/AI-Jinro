@@ -37,16 +37,15 @@ public class Board : MonoBehaviour
         }
     }
 
-    // ボードに文字列をセットし表示するメソッド
+    // ボードの配列に文字列をセットするメソッド
     // 引数には表示するボードの番号と文字列を受け取る
     public void SetText(int i, string s)
     {
         _mainTextArr[i] = s;
-        Display(i);
     }
 
     // 次のページを表示する
-    public void Next()
+    public void OnNext()
     {
         // 6の次は無い
         if (CurrentIndex < 7) CurrentIndex++;
@@ -55,7 +54,7 @@ public class Board : MonoBehaviour
     }
 
     // 前のページを表示する
-    public void Back()
+    public void OnBack()
     {
         // 0より前はない
         if (CurrentIndex > 0) CurrentIndex--;

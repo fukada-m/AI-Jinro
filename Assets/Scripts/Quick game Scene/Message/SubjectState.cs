@@ -23,7 +23,9 @@ public class SubjectState : MonoBehaviour, IMessageState
             string text = inputField.text;
             if (string.IsNullOrWhiteSpace(text)) return;
 
-            _board.SetText(1, text); // プレイヤー1の回答として掲示板にセット
+            // プレイヤー1の回答として掲示板にセット
+            _board.SetText(1, text); 
+            _board.Display(1);
 
             inputField.text = ""; // 入力欄をクリア
             _flashMessage.ShowMessage("お題に回答しました");

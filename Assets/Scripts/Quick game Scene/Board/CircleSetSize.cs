@@ -1,16 +1,11 @@
 using UniRx;
 using UnityEngine;
 
-public class CircleSelector : MonoBehaviour
+public class CircleSetSize : MonoBehaviour
 {
     [SerializeField] Vector2 _bigSize; // 拡大したときのサイズ
     [SerializeField] Circle[] _circles = new Circle[8]; // 拡大縮小を管理する丸が入った配列
-    Board _board;
 
-    void Awake()
-    {
-        _board = GetComponent<Board>();
-    }
     void Start()
     {
         _circles[0].ChangeSize(_bigSize);
@@ -26,18 +21,6 @@ public class CircleSelector : MonoBehaviour
                 })
                 .AddTo(this);
         }
-    }
-
-    // 次の丸を選択する
-    public void Next()
-    {
-        Select(_circles[_board.CurrentIndex]);
-    }
-
-    // ひとつ前の丸を選択する
-    public void Back()
-    {
-        Select(_circles[_board.CurrentIndex]);
     }
 
     // 一度全ての丸を初期サイズに戻してから選択された丸だけ拡大する
