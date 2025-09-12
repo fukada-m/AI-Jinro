@@ -14,8 +14,6 @@ public class Board : MonoBehaviour
 
     void Start()
     {
-
-        Thinking();
         // イベントを購読。丸がクリックされたら表示される内容を丸に対応するものに変更する処理
         foreach (var circle in _circles)
         {
@@ -60,14 +58,6 @@ public class Board : MonoBehaviour
         if (CurrentIndex > 0) CurrentIndex--;
         Display(CurrentIndex);
         _circles[CurrentIndex].OnClick();
-    }
-
-    // 本来はAIに考えさせてからテキストをセットする
-    void Thinking()
-    {
-        // とりあえずお題は固定
-        _mainTextArr[0] = "日本人の国民性";
-        _mainText.text = _mainTextArr[CurrentIndex]; // 最初は[0]を表示 
     }
 
     // ボードに表示するメソッド
