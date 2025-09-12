@@ -65,7 +65,7 @@ public class Vote : MonoBehaviour
     }
 
     // 投票フェーズでのみ投票ボタンを表示する
-    void CheckActiveVoteButton()
+    public void CheckActiveVoteButton()
     {
         string currentPhase = _phaseController.CurrentPhase;
         //投票フェーズでなければ非アクティブ
@@ -88,6 +88,5 @@ public class Vote : MonoBehaviour
             _voteButton.SetActive(true);
         }
     }
-
 
 }
