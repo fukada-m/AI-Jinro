@@ -1,6 +1,7 @@
 using UniRx;
 using UnityEngine;
 
+// 丸のサイズを制御するクラス
 public class CircleSetSize : MonoBehaviour
 {
     [SerializeField] Vector2 _bigSize; // 拡大したときのサイズ
