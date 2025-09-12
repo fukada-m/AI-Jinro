@@ -37,5 +37,5 @@ public abstract class PhaseBase : MonoBehaviour
         Debug.Log($"{this.GetType().Name}にAIのアクションはありません");
     }
 
-    protected abstract void SetMessageState(); // 各ステートを継承先でセットする
+    protected abstract void SetMessageState(); // 各フェーズで使用するステートを継承先でセットする
 }
