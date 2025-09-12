@@ -19,7 +19,6 @@ public class Vote : MonoBehaviour
         _phaseController = GetComponent<PhaseController>();
         _board = GetComponent<Board>();
         _flashMessage = GetComponent<FlashMessage>();
-
     }
 
     void Start()
@@ -50,6 +49,12 @@ public class Vote : MonoBehaviour
         // 投票したらボタンはずっと非アクティブ
         _voteButton.SetActive(false);
         _isLocked = true;
+    }
+
+    // AIの投票用
+    public void AiVote(int i)
+    {
+        _results[i]++;
     }
 
     // 投票結果が同数の場合は一番小さい添え字になる
