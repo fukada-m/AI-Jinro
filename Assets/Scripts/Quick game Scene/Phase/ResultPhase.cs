@@ -20,6 +20,7 @@ public class ResultPhase : PhaseBase
         base.ChangePhase();
         SetMessageState();
         _vote.CheckActiveVoteButton(); // このフェーズでは投票ボタンを非アクティブにする
+        _flashMessage.ShowMessage($"脱落者はプレイヤー{_vote.GetTotal()}です。残念!");
     }
     protected override void SetMessageState()
     {

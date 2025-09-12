@@ -61,7 +61,9 @@ public class Vote : MonoBehaviour
     public int GetTotal()
     {
         int max = _results.Max();
-        return Array.IndexOf(_results, max);
+        int result = Array.IndexOf(_results, max);
+        _results = new int[8];
+        return result;
     }
 
     // 投票フェーズでのみ投票ボタンを表示する
