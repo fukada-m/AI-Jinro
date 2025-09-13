@@ -42,6 +42,14 @@ public class Board : MonoBehaviour
         _mainTextArr[i] = s;
     }
 
+    // ボードに表示するメソッド
+    // 引数には表示するボードの番号を受け取る
+    public void Display(int i)
+    {
+        _mainText.text = _mainTextArr[i];
+        _titleText.text = _titleTextArr[i];
+    }
+    
     // 次のページを表示する
     public void OnNext()
     {
@@ -58,14 +66,6 @@ public class Board : MonoBehaviour
         if (CurrentIndex > 0) CurrentIndex--;
         Display(CurrentIndex);
         _circles[CurrentIndex].OnClick();
-    }
-
-    // ボードに表示するメソッド
-    // 引数には表示するボードの番号を受け取る
-    public void Display(int i)
-    {
-        _mainText.text = _mainTextArr[i];
-        _titleText.text = _titleTextArr[i];
     }
 
     // お題を返す
