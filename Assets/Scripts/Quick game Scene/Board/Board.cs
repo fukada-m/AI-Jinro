@@ -44,9 +44,9 @@ public class Board : MonoBehaviour
         CurrentCircle = Circles[index];
         CurrentCircle.OnClick();
     }
+    // 丸を削除する
     public void Remove(int i)
     {
-        Debug.Log($"iは{i}circles[i]は{Circles[i].Title}");
         Circles[i].DestroySelf();
         Circles.RemoveAt(i);
     }
