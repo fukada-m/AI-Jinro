@@ -9,7 +9,7 @@ public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] Text _text; //あと何秒か表示する
 
-    private Coroutine _countdownCoroutine;
+    Coroutine _countdownCoroutine;
 
     // カウントダウンが終了したことを通知するイベント
     Subject<Unit> _noticeEndCount = new Subject<Unit>();
@@ -41,7 +41,7 @@ public class CountdownTimer : MonoBehaviour
         _noticeEndCount.OnNext(Unit.Default); //カウントダウン終了したことを通知
     }
 
-    private IEnumerator CountdownRoutine(float startTime)
+    IEnumerator CountdownRoutine(float startTime)
     {
         float currentTime = startTime;
 
