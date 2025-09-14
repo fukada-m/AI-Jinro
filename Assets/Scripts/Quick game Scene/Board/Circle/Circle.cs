@@ -4,12 +4,16 @@ using System;
 
 public class Circle : MonoBehaviour
 {
+    public string Text; // 対応する掲示板のテキスト
+    public string Title; // 対応する掲示板のタイトル
     RectTransform rect; // 自分の今のサイズ
-    public int Index; // 自分の番号
     Vector2 initialSize;  // 初期サイズを取っておくのに使う
-    Subject<Circle> clicked = new Subject<Circle>(); // クリックされたら Circle を渡すイベント
-    public IObservable<Circle> OnClicked => clicked; // イベントは IObservable として外部には公開
 
+    // OnClicked イベント クリックされたら自分を渡す
+    Subject<Circle> clicked = new Subject<Circle>();
+    public IObservable<Circle> OnClicked => clicked;
+
+    public Ai Ai;
     void Awake()
     {
         rect = GetComponent<RectTransform>();
@@ -17,13 +21,13 @@ public class Circle : MonoBehaviour
         initialSize = rect.sizeDelta;
     }
 
-    // クリックされたら自分の添え字を通知
+    // クリックされたら通知先に自分を渡す
     public void OnClick()
     {
         clicked.OnNext(this);
     }
 
-    // 送られてきたサイズアップに変更
+    // 送られてきたサイズに変更
     public void ChangeSize(Vector2 newSize)
     {
         rect.sizeDelta = newSize;
@@ -34,4 +38,11 @@ public class Circle : MonoBehaviour
     {
         rect.sizeDelta = initialSize;
     }
+
+    // このゲームオブジェクトを削除
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
+    }
+
 }

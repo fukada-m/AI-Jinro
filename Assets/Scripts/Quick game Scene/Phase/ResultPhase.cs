@@ -5,6 +5,7 @@ public class ResultPhase : PhaseBase
 {
     IMessageState _resultState;
     Vote _vote;
+    Board _board;
 
     protected override void Awake()
     {
@@ -13,6 +14,8 @@ public class ResultPhase : PhaseBase
         if (_resultState == null) Debug.LogError("ResultStateクラスがGetComponentできなかった");
         _vote = GetComponent<Vote>();
         if (_vote == null) Debug.LogError("VoteクラスがGetComponentできなかった");
+        _board = GetComponent<Board>();
+        if (_board == null) Debug.LogError("BoardクラスがGetComponentできなかった");
     }
 
     public override void ChangePhase()
@@ -21,6 +24,8 @@ public class ResultPhase : PhaseBase
         SetMessageState();
         _vote.CheckActiveVoteButton(); // このフェーズでは投票ボタンを非アクティブにする
         _flashMessage.ShowMessage($"脱落者はプレイヤー{_vote.GetResult()}です。残念!");
+        _board.Remove(_vote.GetResult());
+        _vote.ResetResult();
     }
     
     protected override void SetMessageState()

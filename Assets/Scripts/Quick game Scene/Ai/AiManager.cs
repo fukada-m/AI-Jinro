@@ -1,49 +1,38 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AiManager : MonoBehaviour
 {
-    Board _board; //掲示板
-    Vote _vote; // 投票
-    Ai[] _AIs = new Ai[6]; // クイックゲームだとAIは5人
-
+    [SerializeField] Circle _SubjectCircle;
+    
     void Awake()
     {
-        _board = GetComponent<Board>();
-        if (_board == null) Debug.LogError("BoardクラスがGetComponentできませんでした");
-        _vote = GetComponent<Vote>();
-        if (_vote == null) Debug.LogError("VoteクラスがGetComponentできませんでした");
-    }
-    void Start()
-    {
-        // AIを5体作成
-        for (int i = 0; i < _AIs.Length; i++)
-        {
-            _AIs[i] = new Ai();
-        }
+        if (_SubjectCircle == null) Debug.LogError("Circleクラスがありませんでした");
     }
 
     // お題に答える
-    public void CreateAnswer()
+    // 引数：掲示板に表示されてる丸たち
+    public void CreateAnswer(List<Circle> circles)
     {
-        var subject = _board.GetSubject();
-
-        int index = 2; // AIは掲示板の2番目から使う
-        // 一人ずつ回答をセットする
-        foreach (var ai in _AIs)
+        var subject = _SubjectCircle.Text;
+        foreach (var circle in circles)
         {
-            _board.SetText(index, ai.AnswerQuestion(subject));
-            index++;
+            if (circle.Ai != null) circle.Text = circle.Ai.AnswerQuestion(subject);
         }
     }
 
     // 投票する
-    public void Vote()
+    // 引数：掲示板に表示されてる丸たち、Voteクラス
+    public void Vote(List<Circle> circles, Vote vote)
     {
-        for (int i = 0; i < _AIs.Length; i++)
+        for (int i = 0; i < circles.Count; i++)
         {
-            int playerNum = _AIs[i].ThinkVote();
-            _vote.AiVote(playerNum);
-            Debug.Log($"プレイヤー{i+2}はプレイヤー{playerNum}に投票しました");
+            if (circles[i].Ai != null)
+            {
+                int playerNum = circles[i].Ai.ThinkVote();
+                vote.AiVote(playerNum);
+                Debug.Log($"{circles[i].Title}はプレイヤー{playerNum}に投票しました");
+            }
         }
     }
 

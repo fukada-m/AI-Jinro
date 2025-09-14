@@ -4,7 +4,7 @@ using UnityEngine.UI;
 // お題への回答を投稿するステート
 public class SubjectState : MonoBehaviour, IMessageState
 {
-    [SerializeField] Board _board;  // ボード
+    [SerializeField] Circle _circle; // プレイヤーの丸
     [SerializeField] InputField inputField;  // 入力欄
     [SerializeField] FlashMessage _flashMessage; // フラッシュメッセージ
     bool _isLocked = false; // お題に回答できるのは1度だけ
@@ -24,8 +24,8 @@ public class SubjectState : MonoBehaviour, IMessageState
             if (string.IsNullOrWhiteSpace(text)) return;
 
             // プレイヤー1の回答として掲示板にセット
-            _board.SetText(1, text); 
-            _board.Display(1);
+            _circle.Text = text;
+            _circle.OnClick();
 
             inputField.text = ""; // 入力欄をクリア
             _flashMessage.ShowMessage("お題に回答しました");

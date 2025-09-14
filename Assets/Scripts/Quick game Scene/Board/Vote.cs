@@ -17,8 +17,14 @@ public class Vote : MonoBehaviour
     void Awake()
     {
         _phaseController = GetComponent<PhaseController>();
+        if (_phaseController == null) Debug.LogError("PhaseControllerクラスがGetComponentできませんでした。");
+
         _board = GetComponent<Board>();
+        if (_board == null) Debug.LogError("BoardクラスがGetComponentできませんでした。");
+
         _flashMessage = GetComponent<FlashMessage>();
+        if (_flashMessage == null) Debug.LogError("FlashMessageクラスがGetComponentできませんでした。");
+
     }
 
     void Start()
@@ -28,6 +34,8 @@ public class Vote : MonoBehaviour
         {
             _results[i] = 0;
         }
+
+        // 丸がクリックされたら投票ボタンを表示するかチェックする
         foreach (var circle in _circles)
         {
             circle.OnClicked
@@ -43,9 +51,39 @@ public class Vote : MonoBehaviour
     // クリックされたプレイヤーに投票する
     public void OnClick()
     {
-        int index = _board.CurrentIndex;
-        _results[index]++;
-        _flashMessage.ShowMessage($"プレイヤー{index}に投票しました");
+        string playerName = _board.CurrentCircle.Title;
+        switch (playerName)
+        {
+            case "プレイヤー1":
+                _results[1]++;
+                break;
+
+            case "プレイヤー2":
+                _results[2]++;
+                break;
+
+            case "プレイヤー3":
+                _results[3]++;
+                break;
+
+            case "プレイヤー4":
+                _results[4]++;
+                break;
+
+            case "プレイヤー5":
+                _results[5]++;
+                break;
+
+            case "プレイヤー6":
+                _results[6]++;
+                break;
+            
+            case "プレイヤー7":
+                _results[7]++;
+                break;
+            
+        }
+        _flashMessage.ShowMessage($"{playerName}に投票しました");
         // 投票したらボタンはずっと非アクティブ
         _voteButton.SetActive(false);
         _isLocked = true;
@@ -68,8 +106,12 @@ public class Vote : MonoBehaviour
     {
         int max = _results.Max();
         int result = Array.IndexOf(_results, max);
-        _results = new int[8];
         return result;
+    }
+
+    public void ResetResult()
+    {
+        _results = new int[8];
     }
 
     // 投票フェーズでのみ投票ボタンを表示する
@@ -85,9 +127,9 @@ public class Vote : MonoBehaviour
 
         if (_isLocked == true) return; // ロック中はずっと非アクティブ
 
-        int CurrentCircle = _board.CurrentIndex;
+        Circle currentCircle = _board.CurrentCircle;
         // 掲示板の表示がお題とプレイヤー1でなければアクティブ
-        if (CurrentCircle == 0 || CurrentCircle == 1)
+        if (currentCircle.Title == "お題" || currentCircle.Title == "プレイヤー1")
         {
             _voteButton.SetActive(false);
         }

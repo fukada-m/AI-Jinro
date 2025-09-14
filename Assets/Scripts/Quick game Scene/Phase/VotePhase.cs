@@ -6,6 +6,7 @@ public class VotePhase : PhaseBase
     IMessageState _voteState;
     Vote _vote;
     AiManager _aiManager;
+    Board _board;
 
     protected override void Awake()
     {
@@ -16,6 +17,8 @@ public class VotePhase : PhaseBase
         if (_vote == null) Debug.LogError("VoteクラスがGetComponentできませんでした");
         _aiManager = GetComponent<AiManager>();
         if (_aiManager == null) Debug.LogError("AiManagerクラスがGetComponentできませんでした");
+        _board = GetComponent<Board>();
+        if (_board == null) Debug.LogError("BoardクラスがGetComponentできませんでした");
 
     }
 
@@ -23,7 +26,7 @@ public class VotePhase : PhaseBase
     // TODO 非同期メソッドにして終わったら投票完了にする。今はUpdateで監視してる
     protected override void AiAction()
     {
-        _aiManager.Vote();
+        _aiManager.Vote(_board.Circles, _vote);
     }
 
     void Update()
