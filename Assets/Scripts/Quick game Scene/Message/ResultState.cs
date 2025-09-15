@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// 結果発表中は投票できなくするステート
+// 結果発表中は投稿できなくなるステート
 public class ResultState : MonoBehaviour, IMessageState
 {
     FlashMessage _flashMessage; // フラッシュメッセージ
