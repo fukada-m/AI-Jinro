@@ -6,6 +6,7 @@ using System;
 // 投票を管理するクラス
 public class Vote : MonoBehaviour
 {
+    public ReactiveProperty<int> VoteCount { get; private set; } = new ReactiveProperty<int>(0);
     PhaseController _phaseController;
     Board _board;
     FlashMessage _flashMessage;
@@ -52,6 +53,7 @@ public class Vote : MonoBehaviour
     public void OnClick()
     {
         string playerName = _board.CurrentCircle.Title;
+        VoteCount.Value++;
         switch (playerName)
         {
             case "プレイヤー1":
@@ -77,11 +79,11 @@ public class Vote : MonoBehaviour
             case "プレイヤー6":
                 _results[6]++;
                 break;
-            
+
             case "プレイヤー7":
                 _results[7]++;
                 break;
-            
+
         }
         _flashMessage.ShowMessage($"{playerName}に投票しました");
         // 投票したらボタンはずっと非アクティブ
@@ -93,12 +95,7 @@ public class Vote : MonoBehaviour
     public void AiVote(int i)
     {
         _results[i]++;
-    }
-
-    // 投票数を返す
-    public int GetVoteCount()
-    {
-        return _results.Sum();
+        VoteCount.Value++;
     }
 
     // 投票結果が同数の場合は一番小さい添え字になる
