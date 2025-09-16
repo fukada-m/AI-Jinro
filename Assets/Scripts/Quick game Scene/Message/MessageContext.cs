@@ -5,6 +5,7 @@ public class MessageContext : MonoBehaviour
 {
     IMessageState _currentState;
 
+
     public void SetState(IMessageState ms)
     {
         _currentState = ms;
