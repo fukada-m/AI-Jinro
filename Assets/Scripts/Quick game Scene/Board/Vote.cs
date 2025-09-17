@@ -1,7 +1,6 @@
 using UnityEngine;
 using UniRx;
 using System.Linq;
-using System;
 
 // 投票を管理するクラス
 public class Vote : MonoBehaviour
@@ -103,12 +102,20 @@ public class Vote : MonoBehaviour
         VoteCount.Value++;
     }
 
-    // 投票結果が同数の場合は一番小さい添え字になる
+    // 投票結果が同数の場合はランダムに選ばれる
     public int GetResult()
     {
         int max = _results.Max();
-        int result = Array.IndexOf(_results, max);
-        return result;
+        // 最大値と一致する添え字をすべて候補にする
+        var candidates = _results
+            .Select((value, index) => new { value, index })
+            .Where(x => x.value == max)
+            .Select(x => x.index)
+            .ToList();
+
+        // 候補の中からランダムに1つ選んで返す
+        int choice = candidates[Random.Range(0, candidates.Count)];
+        return choice;
     }
 
     public void ResetResult()
