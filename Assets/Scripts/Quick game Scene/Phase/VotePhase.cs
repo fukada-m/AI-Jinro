@@ -50,7 +50,7 @@ public class VotePhase : PhaseBase
     // 全員の投票が終わったらこのフェーズを終わらせる
     void VoteEndAction(int vouteCount)
     {
-        if (vouteCount == 7)
+        if (vouteCount == (_board.Circles.Count - 1))
         {
             StartCoroutine(ForceEnd());
         }

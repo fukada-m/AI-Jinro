@@ -115,6 +115,7 @@ public class Vote : MonoBehaviour
     {
         _results = new int[8];
         _isLocked = false;
+        VoteCount.Value = 0;
     }
 
     // 投票フェーズでのみ投票ボタンを表示する
