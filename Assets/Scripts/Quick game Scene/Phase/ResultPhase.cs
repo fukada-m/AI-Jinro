@@ -28,7 +28,6 @@ public class ResultPhase : PhaseBase
         _vote.CheckActiveVoteButton(); // このフェーズでは投票ボタンを非アクティブにする
         StartCoroutine(AnnouncementDropOutPlayer());
         _board.Remove(_vote.GetResult());
-        _vote.ResetResult();
     }
 
     protected override void SetMessageState()
@@ -44,6 +43,7 @@ public class ResultPhase : PhaseBase
         GameObject flashMessageOBJ = Instantiate(_flashMessagePrefab, _canvasTransform);
         FlashMessage flashMessage = flashMessageOBJ.GetComponent<FlashMessage>();
         flashMessage.ShowMessage($"脱落者はプレイヤー{_vote.GetResult()}です。残念!");
+        _vote.ResetResult();
     }
 
 }
