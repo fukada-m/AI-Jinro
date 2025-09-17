@@ -114,6 +114,7 @@ public class Vote : MonoBehaviour
     public void ResetResult()
     {
         _results = new int[8];
+        _isLocked = false;
     }
 
     // 投票フェーズでのみ投票ボタンを表示する
