@@ -9,7 +9,8 @@ public class Vote : MonoBehaviour
     public ReactiveProperty<int> VoteCount { get; private set; } = new ReactiveProperty<int>(0);
     PhaseController _phaseController;
     Board _board;
-    FlashMessage _flashMessage;
+    Transform _canvasTransform; // フラッシュメッセージの開始位置
+    [SerializeField] GameObject _flashMessagePfefab;
     [SerializeField] GameObject _voteButton;
     [SerializeField] Circle[] _circles = new Circle[8]; //イベント購読用
     bool _isLocked = false; // すでに投票したかどうか
@@ -17,15 +18,15 @@ public class Vote : MonoBehaviour
 
     void Awake()
     {
+        GameObject canvasOBJ = GameObject.Find("Canvas");
+        _canvasTransform = canvasOBJ.transform;
+        if (_canvasTransform == null) Debug.LogError("Canvasが見つかりませんでした。");
+
         _phaseController = GetComponent<PhaseController>();
         if (_phaseController == null) Debug.LogError("PhaseControllerクラスがGetComponentできませんでした。");
 
         _board = GetComponent<Board>();
         if (_board == null) Debug.LogError("BoardクラスがGetComponentできませんでした。");
-
-        _flashMessage = GetComponent<FlashMessage>();
-        if (_flashMessage == null) Debug.LogError("FlashMessageクラスがGetComponentできませんでした。");
-
     }
 
     void Start()
@@ -85,7 +86,11 @@ public class Vote : MonoBehaviour
                 break;
 
         }
-        _flashMessage.ShowMessage($"{playerName}に投票しました");
+
+        // フラッシュメッセージを表示
+        GameObject flashMessageOBJ = Instantiate(_flashMessagePfefab, _canvasTransform);
+        FlashMessage flashMessage = flashMessageOBJ.GetComponent<FlashMessage>();
+        flashMessage.ShowMessage($"{playerName}に投票しました");
         // 投票したらボタンはずっと非アクティブ
         _voteButton.SetActive(false);
         _isLocked = true;

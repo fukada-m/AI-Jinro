@@ -65,8 +65,11 @@ public class VotePhase : PhaseBase
     IEnumerator ForceEnd()
     {
         yield return new WaitForSeconds(1f); // 最後の人が投票してから待つ時間
-        _flashMessage.ShowMessage("全員の投票が終わりました。");
-        yield return new WaitForSeconds(1f); // このフラッシュメッセージを表示する時間
+
+        // フラッシュメッセージを表示
+        GameObject flashMessageOBJ = Instantiate(_flashMessagePrefab, _canvasTransform);
+        FlashMessage flashMessage = flashMessageOBJ.GetComponent<FlashMessage>();
+        flashMessage.ShowMessage("全員の投票が終わりました");
 
         _countdownTimer.ForceEnd(); // フェーズの強制終了
     }

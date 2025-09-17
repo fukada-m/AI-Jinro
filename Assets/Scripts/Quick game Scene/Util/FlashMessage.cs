@@ -10,7 +10,7 @@ public class FlashMessage : MonoBehaviour
     [SerializeField] float moveSpeed;     // 移動スピード(px/sec)
 
     RectTransform parentRect; // 親オブジェクトの位置
-    Vector3 startPos; // スタート位置
+    Vector2 startPos; // スタート位置
     Coroutine currentCoroutine;
 
     void Awake()
@@ -38,7 +38,7 @@ public class FlashMessage : MonoBehaviour
     // 下に動かすコルーチン。スタート地点(画面外)に戻す
     private IEnumerator ShowAndMove()
     {
-        Vector3 targetPos = startPos - new Vector3(0, moveDistance, 0); // ゴール地点を作成
+        Vector3 targetPos = startPos - new Vector2(0, moveDistance); // ゴール地点を作成
         float elapsed = 0f;
 
         // 下へ移動
@@ -49,7 +49,6 @@ public class FlashMessage : MonoBehaviour
             yield return null;
         }
 
-        // 位置を戻す
-        parentRect.anchoredPosition = startPos;
+        Destroy(gameObject);
     }
 }
