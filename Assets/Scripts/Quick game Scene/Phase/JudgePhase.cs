@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 // 勝敗判定フェーズ
@@ -36,7 +35,9 @@ public class JudgePhase : PhaseBase
         if (circle1Name != "Circle (1)") _flashMessage.ShowMessage("あなたの負けです");
 
         // Circleが3つなら人の勝ち
+        if (_board.Circles.Count == 3) _flashMessage.ShowMessage("あなたの勝ちです");
 
         // それ以外は続行
+        _flashMessage.ShowMessage("続行します");
     }
 }
