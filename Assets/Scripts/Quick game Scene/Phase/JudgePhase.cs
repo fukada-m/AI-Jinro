@@ -44,11 +44,13 @@ public class JudgePhase : PhaseBase
         if (circle1Name != "Circle (1)")
         {
             flashMessage.ShowMessage("あなたの負けです");
+            _countdownTimer.GameEnd("Game over");
         }
         // 残ってるCircleが3つなら人の勝ち
         else if (_board.Circles.Count == 3)
         {
             flashMessage.ShowMessage("あなたの勝ちです");
+            _countdownTimer.GameEnd("おめでとう");
         }
         // それ以外はゲーム続行
         else
