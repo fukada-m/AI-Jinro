@@ -7,7 +7,7 @@ using System;
 // 各フェーズでカウントダウンを行う
 public class CountdownTimer : MonoBehaviour
 {
-    [SerializeField] Text _text; //あと何秒か表示する
+    [SerializeField] Text _timerText; //あと何秒か表示する
 
     Coroutine _countdownCoroutine;
 
@@ -17,7 +17,7 @@ public class CountdownTimer : MonoBehaviour
 
     void Start()
     {
-        _text.text = "スタート！！";
+        _timerText.text = "スタート！！";
     }
 
     public void StartCountdown(float startTime)
@@ -29,6 +29,17 @@ public class CountdownTimer : MonoBehaviour
         _countdownCoroutine = StartCoroutine(CountdownRoutine(startTime));
     }
 
+    // カウントダウンを強制終了するが通知はしない
+    public void GameEnd(string s)
+    {
+        if (_countdownCoroutine != null)
+        {
+            StopCoroutine(_countdownCoroutine);
+            _countdownCoroutine = null;
+        }
+        _timerText.text = s;
+    } 
+
     // カウントダウンを強制終了
     public void ForceEnd()
     {
@@ -37,7 +48,7 @@ public class CountdownTimer : MonoBehaviour
             StopCoroutine(_countdownCoroutine);
             _countdownCoroutine = null;
         }
-        _text.text = "終了";
+        _timerText.text = "終了";
         _noticeEndCount.OnNext(Unit.Default); //カウントダウン終了したことを通知
     }
 
@@ -47,12 +58,12 @@ public class CountdownTimer : MonoBehaviour
 
         while (currentTime > 0)
         {
-            _text.text = $"あと{Mathf.CeilToInt(currentTime)}秒";
+            _timerText.text = $"あと{Mathf.CeilToInt(currentTime)}秒";
             yield return null; // 1フレーム待つ
             currentTime -= Time.deltaTime;
         }
 
-        _text.text = "終了";
+        _timerText.text = "終了";
         _noticeEndCount.OnNext(Unit.Default); //カウントダウン終了したことを通知
     }
 
