@@ -69,6 +69,11 @@ public class PhaseController : MonoBehaviour
         {
             ToJudgePhase();
         }
+        // 勝敗判定 ⇒ お題
+        else if (CurrentPhase == "勝敗判定")
+        {
+            ToSubjectPhase();
+        }
     }
 
     // お題フェーズに遷移
