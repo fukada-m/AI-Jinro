@@ -1339,6 +1339,8 @@ GameObject:
   - component: {fileID: 810499002}
   - component: {fileID: 810498993}
   - component: {fileID: 810498994}
+  - component: {fileID: 810499005}
+  - component: {fileID: 810499006}
   - component: {fileID: 810498990}
   - component: {fileID: 810498986}
   - component: {fileID: 810499001}
@@ -1585,8 +1587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _time: 2
-  _message: "\u7D50\u679C\u767A\u8868\uFF01\uFF01"
-  _text: "\u7D50\u679C\u767A\u8868\u4E2D"
+  _message: "\u6295\u7968\u7D50\u679C\u767A\u8868\uFF01\uFF01"
+  _text: "\u6295\u7968\u7D50\u679C\u767A\u8868\u4E2D"
   _phaseText: {fileID: 1030182681}
 --- !u!114 &810499002
 MonoBehaviour:
@@ -1626,6 +1628,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11869e774184e7848b860d9672ffc707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &810499005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810498985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b7c545c804c844ba41e59361884d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _time: 5
+  _message: "\u52DD\u6557\u5224\u5B9A\uFF01\uFF01"
+  _text: "\u52DD\u6557\u5224\u5B9A"
+  _phaseText: {fileID: 1030182681}
+--- !u!114 &810499006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810498985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b2c987203b02343a630597921ce0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputField: {fileID: 1926593721}
+  _scrollRect: {fileID: 2010801891}
+  _content: {fileID: 1825810351}
+  _messagePrefab: {fileID: 4052208114736663642, guid: a6687c3aeaf49ab4f8fd6dbaeca34d68, type: 3}
 --- !u!1 &820319863
 GameObject:
   m_ObjectHideFlags: 0
