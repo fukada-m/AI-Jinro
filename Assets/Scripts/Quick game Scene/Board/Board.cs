@@ -44,11 +44,17 @@ public class Board : MonoBehaviour
         CurrentCircle = Circles[index];
         CurrentCircle.OnClick();
     }
-    // 丸を削除する
-    public void Remove(int i)
+    // プレイヤー名が一致する丸を削除する
+    public void Remove(string s)
     {
-        Circles[i].DestroySelf();
-        Circles.RemoveAt(i);
+        for (int i=0; i < Circles.Count; i++)
+        {
+            if (Circles[i].Title == s)
+            {
+                Circles[i].DestroySelf();
+                Circles.RemoveAt(i);
+            }
+        }
     }
 
     // ボードに表示するメソッド

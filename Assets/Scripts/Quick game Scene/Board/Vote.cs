@@ -1,6 +1,7 @@
 using UnityEngine;
 using UniRx;
 using System.Linq;
+using System.Collections.Generic;
 
 // 投票を管理するクラス
 public class Vote : MonoBehaviour
@@ -13,8 +14,7 @@ public class Vote : MonoBehaviour
     [SerializeField] GameObject _voteButton;
     [SerializeField] Circle[] _circles = new Circle[8]; //イベント購読用
     bool _isLocked = false; // すでに投票したかどうか
-    int[] _results = new int[8]; // 投票結果を格納 添え字がそのままプレイヤー番号になる。よって0は使わない
-
+    Dictionary<string, int> _scores = new Dictionary<string, int>(); // プレイヤー名と投票数を格納する辞書
     void Awake()
     {
         GameObject canvasOBJ = GameObject.Find("Canvas");
@@ -30,10 +30,10 @@ public class Vote : MonoBehaviour
 
     void Start()
     {
-        // 全ての要素を0で初期化
-        for (int i = 0; i < _results.Length; i++)
+        // 全てのプレイヤーの投票数を0で初期化
+        for (int i = 0; i < 7; i++)
         {
-            _results[i] = 0;
+            _scores[$"プレイヤー{i+1}"] = 0;
         }
 
         // 丸がクリックされたら投票ボタンを表示するかチェックする
@@ -53,38 +53,8 @@ public class Vote : MonoBehaviour
     public void OnClick()
     {
         string playerName = _board.CurrentCircle.Title;
+        _scores[playerName]++;
         VoteCount.Value++;
-        switch (playerName)
-        {
-            case "プレイヤー1":
-                _results[1]++;
-                break;
-
-            case "プレイヤー2":
-                _results[2]++;
-                break;
-
-            case "プレイヤー3":
-                _results[3]++;
-                break;
-
-            case "プレイヤー4":
-                _results[4]++;
-                break;
-
-            case "プレイヤー5":
-                _results[5]++;
-                break;
-
-            case "プレイヤー6":
-                _results[6]++;
-                break;
-
-            case "プレイヤー7":
-                _results[7]++;
-                break;
-
-        }
 
         // フラッシュメッセージを表示
         GameObject flashMessageOBJ = Instantiate(_flashMessagePfefab, _canvasTransform);
@@ -96,31 +66,35 @@ public class Vote : MonoBehaviour
     }
 
     // AIの投票用
-    public void AiVote(int i)
+    public void AiVote(string s)
     {
-        _results[i]++;
+        _scores[s]++;
         VoteCount.Value++;
     }
 
     // 投票結果が同数の場合はランダムに選ばれる
-    public int GetResult()
+    public string GetResult()
     {
-        int max = _results.Max();
-        // 最大値と一致する添え字をすべて候補にする
-        var candidates = _results
-            .Select((value, index) => new { value, index })
-            .Where(x => x.value == max)
-            .Select(x => x.index)
+        int maxValue = _scores.Values.Max();
+        // 最大値と一致するプレイヤーをすべて候補にする
+        var candidates = _scores
+            .Where(kv => kv.Value == maxValue)
+            .Select(kv => kv.Key)
             .ToList();
+        string maxPlayerName = _scores.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
 
         // 候補の中からランダムに1つ選んで返す
-        int choice = candidates[Random.Range(0, candidates.Count)];
-        return choice;
+        string chosenKey  = candidates[Random.Range(0, candidates.Count)];
+        return chosenKey ;
     }
 
     public void ResetResult()
     {
-        _results = new int[8];
+        // 全てのプレイヤーの投票数を初期化
+        for (int i = 0; i < 7; i++)
+        {
+            _scores[$"プレイヤー{i + 1}"] = 0;
+        }
         _isLocked = false;
         VoteCount.Value = 0;
     }

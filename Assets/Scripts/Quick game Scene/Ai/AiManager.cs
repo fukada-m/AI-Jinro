@@ -30,7 +30,7 @@ public class AiManager : MonoBehaviour
             if (circles[i].Ai != null)
             {
                 int playerNum = circles[i].Ai.ThinkVote();
-                vote.AiVote(playerNum);
+                vote.AiVote($"プレイヤー{playerNum}");
                 Debug.Log($"{circles[i].Title}はプレイヤー{playerNum}に投票しました");
             }
         }
