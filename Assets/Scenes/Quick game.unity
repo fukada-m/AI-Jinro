@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: title
       value: "\u30D7\u30EC\u30A4\u30E4\u30FC5"
       objectReference: {fileID: 0}
+    - target: {fileID: 1551950775092718649, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _board
+      value: 
+      objectReference: {fileID: 810498992}
     - target: {fileID: 4458433522025872570, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: Index
       value: 5
@@ -469,6 +473,10 @@ PrefabInstance:
       propertyPath: title
       value: "\u30D7\u30EC\u30A4\u30E4\u30FC2"
       objectReference: {fileID: 0}
+    - target: {fileID: 1551950775092718649, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _board
+      value: 
+      objectReference: {fileID: 810498992}
     - target: {fileID: 4458433522025872570, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: Index
       value: 2
@@ -1258,6 +1266,10 @@ PrefabInstance:
       propertyPath: title
       value: "\u30D7\u30EC\u30A4\u30E4\u30FC3"
       objectReference: {fileID: 0}
+    - target: {fileID: 1551950775092718649, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _board
+      value: 
+      objectReference: {fileID: 810498992}
     - target: {fileID: 4458433522025872570, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: Index
       value: 3
@@ -1338,6 +1350,8 @@ GameObject:
   - component: {fileID: 810498991}
   - component: {fileID: 810499002}
   - component: {fileID: 810498993}
+  - component: {fileID: 810499008}
+  - component: {fileID: 810499007}
   - component: {fileID: 810499005}
   - component: {fileID: 810499006}
   - component: {fileID: 810498990}
@@ -1650,6 +1664,35 @@ MonoBehaviour:
   _scrollRect: {fileID: 2010801891}
   _content: {fileID: 1825810351}
   _messagePrefab: {fileID: 4052208114736663642, guid: a6687c3aeaf49ab4f8fd6dbaeca34d68, type: 3}
+--- !u!114 &810499007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810498985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6385921266a98a43b8544732bb8a7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &810499008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810498985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78aca510265b2fe4fa23ec7a12dc85e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _time: 2
+  _flashMessagePrefab: {fileID: 1568665765772825139, guid: aecc6c53dc0ace34e90137d9f35d4c2e, type: 3}
+  _message: "\u51E6\u5211\u3059\u308BAI\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044"
+  _text: "\u51E6\u5211\u3059\u308BAI\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044"
+  _phaseText: {fileID: 1030182681}
 --- !u!1 &820319863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,6 +2443,10 @@ PrefabInstance:
       propertyPath: title
       value: "\u30D7\u30EC\u30A4\u30E4\u30FC4"
       objectReference: {fileID: 0}
+    - target: {fileID: 1551950775092718649, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _board
+      value: 
+      objectReference: {fileID: 810498992}
     - target: {fileID: 4458433522025872570, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: Index
       value: 4
@@ -2816,6 +2863,10 @@ PrefabInstance:
       propertyPath: title
       value: "\u30D7\u30EC\u30A4\u30E4\u30FC6"
       objectReference: {fileID: 0}
+    - target: {fileID: 1551950775092718649, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _board
+      value: 
+      objectReference: {fileID: 810498992}
     - target: {fileID: 4458433522025872570, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: Index
       value: 6
@@ -4404,6 +4455,10 @@ PrefabInstance:
       propertyPath: title
       value: "\u30D7\u30EC\u30A4\u30E4\u30FC7"
       objectReference: {fileID: 0}
+    - target: {fileID: 1551950775092718649, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
+      propertyPath: _board
+      value: 
+      objectReference: {fileID: 810498992}
     - target: {fileID: 4458433522025872570, guid: e182d3e1c26ad1f41b7755e574151f23, type: 3}
       propertyPath: Index
       value: 7
