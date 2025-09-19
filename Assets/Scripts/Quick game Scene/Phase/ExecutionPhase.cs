@@ -7,7 +7,7 @@ public class ExecutionPhase : PhaseBase
     protected override void Awake()
     {
         base.Awake();
-         _excutionState = GetComponent<ExecutionState>();
+        _excutionState = GetComponent<ExecutionState>();
         if (_excutionState == null) Debug.LogError("ExecutionクラスがGetComponentできませんでした");
 
     }

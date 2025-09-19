@@ -55,7 +55,7 @@ public class JudgePhase : PhaseBase
         // それ以外はゲーム続行
         else
         {
-            flashMessage.ShowMessage("AIが1人脱落しました。ゲームは続きます。");
+            flashMessage.ShowMessage("ゲームは続きます。AIを1人処刑できます");
         }
 
     }

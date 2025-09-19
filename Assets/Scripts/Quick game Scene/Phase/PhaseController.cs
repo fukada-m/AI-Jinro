@@ -11,6 +11,7 @@ public class PhaseController : MonoBehaviour
     VotePhase _votePhase; // 投票フェーズ
     ResultPhase _resultPhase; // 投票結果発表フェーズ
     JudgePhase _judgePhase; // 勝敗判定フェーズ
+    ExecutionPhase _executionPhase; // 処刑フェーズ
 
     void Awake()
     {
@@ -32,6 +33,9 @@ public class PhaseController : MonoBehaviour
 
         _judgePhase = GetComponent<JudgePhase>();
         if (_judgePhase == null) Debug.LogError("JudgePhaseクラスがGetComponentできませんでした");
+
+        _executionPhase = GetComponent<ExecutionPhase>();
+        if (_executionPhase == null) Debug.LogError("ExecutionPhaseクラスがGetComponentできませんでした");
     }
     void Start()
     {
@@ -69,8 +73,13 @@ public class PhaseController : MonoBehaviour
         {
             ToJudgePhase();
         }
-        // 勝敗判定 ⇒ お題
+        // 勝敗判定 ⇒ 処刑
         else if (CurrentPhase == "勝敗判定")
+        {
+            ToExecutionPhase();
+        }
+        // 処刑 ⇒ お題
+        else if (CurrentPhase == "処刑")
         {
             ToSubjectPhase();
         }
@@ -108,5 +117,12 @@ public class PhaseController : MonoBehaviour
     {
         CurrentPhase = "勝敗判定";
         _judgePhase.ChangePhase();
+    }
+
+    // 処刑フェーズに遷移
+    void ToExecutionPhase()
+    {
+        CurrentPhase = "処刑";
+        _executionPhase.ChangePhase();        
     }
 }
