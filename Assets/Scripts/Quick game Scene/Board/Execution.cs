@@ -1,14 +1,20 @@
 using UnityEngine;
 using UniRx;
+using System;
 
 public class Execution : MonoBehaviour
 {
     Board _board;
     Transform _canvasTransform; // フラッシュメッセージの開始位置
-    [SerializeField] GameObject _flashMessagePfefab;
     PhaseController _phaseController;
+    [SerializeField] GameObject _flashMessagePfefab;
     [SerializeField] Circle[] _circles = new Circle[8]; //イベント購読用
     [SerializeField] GameObject _ExecuteButton;
+
+     // OnClickedイベント
+    Subject<Unit> clicked = new Subject<Unit>();
+    public IObservable<Unit> OnClicked => clicked;
+
     void Awake()
     {
         GameObject canvasOBJ = GameObject.Find("Canvas");
@@ -21,20 +27,20 @@ public class Execution : MonoBehaviour
         _board = GetComponent<Board>();
         if (_board == null) Debug.LogError("BoardクラスがGetComponentできませんでした。");
     }
-    
+
     void Start()
     {
-        // 丸がクリックされたら投票ボタンを表示するかチェックする
+        // 丸がクリックされたら処刑ボタンを表示するかチェックする
         foreach (var circle in _circles)
         {
             circle.OnClicked
                 .Subscribe(circle =>
                 {
-                    CheckActiveExecutionButton(); // 投票ボタンを表示するかチェックする
+                    CheckActiveExecutionButton(); // 処刑ボタンを表示するかチェックする
                 })
                 .AddTo(this);
         }
-        CheckActiveExecutionButton(); // 投票ボタンを表示するかチェックする
+        CheckActiveExecutionButton(); // 処刑ボタンを表示するかチェックする
     }
 
     // クリックされたプレイヤーを処刑する
@@ -48,11 +54,12 @@ public class Execution : MonoBehaviour
         flashMessage.ShowMessage($"{playerName}を処刑しました");
 
         _board.Remove(playerName);
+        clicked.OnNext(Unit.Default);
     }
 
+    // 処刑ボタンを表示するかチェックする
     void CheckActiveExecutionButton()
     {
- 
         string currentPhase = _phaseController.CurrentPhase;
         //処刑フェーズでなければ非アクティブ
         if (currentPhase != "処刑")
@@ -61,8 +68,8 @@ public class Execution : MonoBehaviour
             return;
         }
 
-        Circle currentCircle = _board.CurrentCircle;
         // 掲示板の表示がお題とプレイヤー1でなければアクティブ
+        Circle currentCircle = _board.CurrentCircle;
         if (currentCircle.Title == "お題" || currentCircle.Title == "プレイヤー1")
         {
             _ExecuteButton.SetActive(false);
