@@ -21,7 +21,7 @@ public class Execution : MonoBehaviour
         _board = GetComponent<Board>();
         if (_board == null) Debug.LogError("BoardクラスがGetComponentできませんでした。");
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         // 丸がクリックされたら投票ボタンを表示するかチェックする
@@ -37,16 +37,17 @@ public class Execution : MonoBehaviour
         CheckActiveExecutionButton(); // 投票ボタンを表示するかチェックする
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // クリックされたプレイヤーを処刑する
     public void OnClick()
     {
+        string playerName = _board.CurrentCircle.Title;
 
+        // フラッシュメッセージを表示
+        GameObject flashMessageOBJ = Instantiate(_flashMessagePfefab, _canvasTransform);
+        FlashMessage flashMessage = flashMessageOBJ.GetComponent<FlashMessage>();
+        flashMessage.ShowMessage($"{playerName}を処刑しました");
+
+        _board.Remove(playerName);
     }
 
     void CheckActiveExecutionButton()
