@@ -45,7 +45,11 @@ public class AiManager : MonoBehaviour
     {
         foreach (var circle in circles)
         {
-            if (circle.Name != "お題")
+            if (circle.Name == "お題" || circle.Name == "プレイヤー1")
+            {
+
+            }
+            else
             {
                 GameObject messageLineAI = Instantiate(_messagePrefab, _content);
                 Text playerName = messageLineAI.GetComponentInChildren<Text>();
