@@ -18,12 +18,13 @@ public class ChatState : MonoBehaviour, IMessageState
         GameObject newMessage = Instantiate(_messagePrefab, _content);
         Text messageText = newMessage.GetComponentInChildren<Text>();
         messageText.text = text;
-        
+
         // 入力欄をクリア
         _inputField.text = "";
 
         // スクロールを一番下へ
         Canvas.ForceUpdateCanvases();
         _scrollRect.verticalNormalizedPosition = 0f;
+        Debug.Log("チャットへ投稿");
     }
 }

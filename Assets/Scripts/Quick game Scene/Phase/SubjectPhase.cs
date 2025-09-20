@@ -48,10 +48,4 @@ public class SubjectPhase : PhaseBase
         _messageContext.SetState(_subjectState);
     }
 
-    // TODO AIに非同期でお題を考えさせる
-    string ThinkSubject()
-    {
-        return "日本人の国民性";
-    }
-
 }

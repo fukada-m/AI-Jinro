@@ -3,14 +3,19 @@ using UnityEngine;
 // 投票中は投稿できなくするステート
 public class VoteState : MonoBehaviour, IMessageState
 {
-    FlashMessage _flashMessage; // フラッシュメッセージ
+    protected Transform _canvasTransform; 
+    [SerializeField] protected GameObject _flashMessagePrefab ;
 
     void Awake()
     {
-        _flashMessage = GetComponent<FlashMessage>();
+        GameObject canvasOBJ = GameObject.Find("Canvas");
+        _canvasTransform = canvasOBJ.transform;
+        if (_canvasTransform == null) Debug.LogError("Canvasが見つかりませんでした");
     }
     public void SendMessage()
     {
-        _flashMessage.ShowMessage("投票中はメッセージを投稿できません");
+        GameObject flashMessageOBJ = Instantiate(_flashMessagePrefab, _canvasTransform);
+        FlashMessage flashMessage = flashMessageOBJ.GetComponent<FlashMessage>();
+        flashMessage.ShowMessage("投票中はメッセージを投稿できません");
     }
 }

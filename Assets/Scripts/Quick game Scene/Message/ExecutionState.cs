@@ -3,14 +3,19 @@ using UnityEngine;
 // 処刑中は投稿できなくなるステート
 public class ExecutionState : MonoBehaviour, IMessageState
 {
-    FlashMessage _flashMessage; // フラッシュメッセージ
+    protected Transform _canvasTransform; 
+    [SerializeField] protected GameObject _flashMessagePrefab ;
 
     void Awake()
     {
-        _flashMessage = GetComponent<FlashMessage>();
+        GameObject canvasOBJ = GameObject.Find("Canvas");
+        _canvasTransform = canvasOBJ.transform;
+        if (_canvasTransform == null) Debug.LogError("Canvasが見つかりませんでした");
     }
     public void SendMessage()
     {
-        _flashMessage.ShowMessage("余計なことを言ってないで処刑するんだ");
+        GameObject flashMessageOBJ = Instantiate(_flashMessagePrefab, _canvasTransform);
+        FlashMessage flashMessage = flashMessageOBJ.GetComponent<FlashMessage>();
+        flashMessage.ShowMessage("余計なことを言ってないで処刑するんだ");
     }
 }
