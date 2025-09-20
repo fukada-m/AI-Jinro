@@ -18,9 +18,10 @@ public class VotePhase : PhaseBase
 
         _vote = GetComponent<Vote>();
         if (_vote == null) Debug.LogError("VoteクラスがGetComponentできませんでした");
-        _aiManager = GetComponent<AiManager>();
 
+        _aiManager = GetComponent<AiManager>();
         if (_aiManager == null) Debug.LogError("AiManagerクラスがGetComponentできませんでした");
+
         _board = GetComponent<Board>();
         if (_board == null) Debug.LogError("BoardクラスがGetComponentできませんでした");
 
