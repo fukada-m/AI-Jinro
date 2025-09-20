@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AiManager : MonoBehaviour
 {
     [SerializeField] Circle _SubjectCircle;
-    
+    [SerializeField] GameObject _messagePrefab;
+    [SerializeField] Transform _content;
+    [SerializeField] ScrollRect _scrollRect;      // ScrollView本体
+
     void Awake()
     {
         if (_SubjectCircle == null) Debug.LogError("Circleクラスがありませんでした");
@@ -36,4 +40,22 @@ public class AiManager : MonoBehaviour
         }
     }
 
+    // 仮でチャットに投稿する
+    public void Chat(List<Circle> circles)
+    {
+        foreach (var circle in circles)
+        {
+            if (circle.Title != "お題")
+            {
+                GameObject messageLineAI = Instantiate(_messagePrefab, _content);
+                Text playerName = messageLineAI.GetComponentInChildren<Text>();
+                playerName.text = circle.Title;
+                Transform message = messageLineAI.transform.Find("Message");
+                Text messageText = message.GetComponentInChildren<Text>();
+                messageText.text = "パチパチはじけよう";
+                Canvas.ForceUpdateCanvases();
+                _scrollRect.verticalNormalizedPosition = 0f;
+            }
+        }
+    }
 }
