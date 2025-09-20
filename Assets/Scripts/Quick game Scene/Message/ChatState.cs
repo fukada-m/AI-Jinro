@@ -25,6 +25,5 @@ public class ChatState : MonoBehaviour, IMessageState
         // スクロールを一番下へ
         Canvas.ForceUpdateCanvases();
         _scrollRect.verticalNormalizedPosition = 0f;
-        Debug.Log("チャットへ投稿");
     }
 }
