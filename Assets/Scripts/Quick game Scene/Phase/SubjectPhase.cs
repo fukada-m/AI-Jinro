@@ -6,7 +6,7 @@ public class SubjectPhase : PhaseBase
     AiManager _aiManager;
     Board _board;
     Subject _subject;
-    IMessageState _subjectState;
+    SubjectState _subjectState;
     [SerializeField] Circle _subjectCircle;
 
     protected override void Awake()

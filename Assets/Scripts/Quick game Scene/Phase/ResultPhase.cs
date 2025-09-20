@@ -4,7 +4,7 @@ using UnityEngine;
 // 結果発表フェーズ
 public class ResultPhase : PhaseBase
 {
-    IMessageState _resultState;
+    ResultState _resultState;
     Vote _vote;
     Board _board;
 

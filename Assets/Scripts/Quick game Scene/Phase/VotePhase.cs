@@ -5,7 +5,7 @@ using UniRx;
 // 投票フェーズ
 public class VotePhase : PhaseBase
 {
-    IMessageState _voteState;
+    VoteState _voteState;
     Vote _vote;
     AiManager _aiManager;
     Board _board;
@@ -13,8 +13,8 @@ public class VotePhase : PhaseBase
     protected override void Awake()
     {
         base.Awake();
-        _voteState = GetComponent<SubjectState>();
-        if (_voteState == null) Debug.LogError("SubjectStateクラスがGetComponentできませんでした");
+        _voteState = GetComponent<VoteState>();
+        if (_voteState == null) Debug.LogError("VoteStateクラスがGetComponentできませんでした");
 
         _vote = GetComponent<Vote>();
         if (_vote == null) Debug.LogError("VoteクラスがGetComponentできませんでした");
@@ -26,6 +26,7 @@ public class VotePhase : PhaseBase
         if (_board == null) Debug.LogError("BoardクラスがGetComponentできませんでした");
 
     }
+
     void Start()
     {
         // 投票数が格納されたリアクティブプロパティを監視
@@ -48,6 +49,11 @@ public class VotePhase : PhaseBase
         _aiManager.Vote(_board.Circles, _vote);
     }
 
+    protected override void SetMessageState()
+    {
+        _messageContext.SetState(_voteState);
+    }
+
     // 全員の投票が終わったらこのフェーズを終わらせる
     void VoteEndAction(int vouteCount)
     {
@@ -55,11 +61,6 @@ public class VotePhase : PhaseBase
         {
             StartCoroutine(ForceEnd());
         }
-    }
-
-    protected override void SetMessageState()
-    {
-        _messageContext.SetState(_voteState);
     }
 
     // フェーズを強制終了
