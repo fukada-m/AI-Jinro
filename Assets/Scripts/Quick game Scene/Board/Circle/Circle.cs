@@ -5,7 +5,7 @@ using System;
 public class Circle : MonoBehaviour
 {
     public string Text; // 対応する掲示板のテキスト
-    public string Title; // 対応する掲示板のタイトル
+    public string Name; // 対応する掲示板のタイトルにも使われる
     RectTransform rect; // 自分の今のサイズ
     Vector2 initialSize;  // 初期サイズを取っておくのに使う
 

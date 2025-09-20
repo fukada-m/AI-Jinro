@@ -20,7 +20,7 @@ public class Board : MonoBehaviour
             circle.OnClicked
                 .Subscribe(circle =>
                 {
-                    Display(circle.Title, circle.Text);
+                    Display(circle.Name, circle.Text);
                     CurrentCircle = circle;
                 })
                 .AddTo(this);
@@ -49,7 +49,7 @@ public class Board : MonoBehaviour
     {
         for (int i=0; i < Circles.Count; i++)
         {
-            if (Circles[i].Title == s)
+            if (Circles[i].Name == s)
             {
                 Circles[i].DestroySelf();
                 Circles.RemoveAt(i);

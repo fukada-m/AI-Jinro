@@ -52,7 +52,7 @@ public class Vote : MonoBehaviour
     // クリックされたプレイヤーに投票する
     public void OnClick()
     {
-        string playerName = _board.CurrentCircle.Title;
+        string playerName = _board.CurrentCircle.Name;
         _scores[playerName]++;
         VoteCount.Value++;
 
@@ -114,7 +114,7 @@ public class Vote : MonoBehaviour
 
         Circle currentCircle = _board.CurrentCircle;
         // 掲示板の表示がお題とプレイヤー1でなければアクティブ
-        if (currentCircle.Title == "お題" || currentCircle.Title == "プレイヤー1")
+        if (currentCircle.Name == "お題" || currentCircle.Name == "プレイヤー1")
         {
             _voteButton.SetActive(false);
         }

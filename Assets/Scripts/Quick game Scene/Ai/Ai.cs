@@ -16,8 +16,8 @@ public class Ai : MonoBehaviour
     {
         // Circlesのタイトルから「プレイヤー番号」だけを抽出
         var candidates = _board.Circles
-                            .Where(c => c.Title.StartsWith("プレイヤー"))
-                            .Select(c => int.Parse(c.Title.Replace("プレイヤー", "")))
+                            .Where(c => c.Name.StartsWith("プレイヤー"))
+                            .Select(c => int.Parse(c.Name.Replace("プレイヤー", "")))
                             .ToList();
 
         // 候補が無い場合はエラー扱い

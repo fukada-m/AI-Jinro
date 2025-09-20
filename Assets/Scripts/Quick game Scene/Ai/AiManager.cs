@@ -35,7 +35,7 @@ public class AiManager : MonoBehaviour
             {
                 int playerNum = circles[i].Ai.ThinkVote();
                 vote.AiVote($"プレイヤー{playerNum}");
-                Debug.Log($"{circles[i].Title}はプレイヤー{playerNum}に投票しました");
+                Debug.Log($"{circles[i].Name}はプレイヤー{playerNum}に投票しました");
             }
         }
     }
@@ -45,11 +45,11 @@ public class AiManager : MonoBehaviour
     {
         foreach (var circle in circles)
         {
-            if (circle.Title != "お題")
+            if (circle.Name != "お題")
             {
                 GameObject messageLineAI = Instantiate(_messagePrefab, _content);
                 Text playerName = messageLineAI.GetComponentInChildren<Text>();
-                playerName.text = circle.Title;
+                playerName.text = circle.Name;
                 Transform message = messageLineAI.transform.Find("Message");
                 Text messageText = message.GetComponentInChildren<Text>();
                 messageText.text = "パチパチはじけよう";

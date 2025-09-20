@@ -31,7 +31,7 @@ public class SubjectPhase : PhaseBase
     // TODO 非同期にする
     protected override void AiAction()
     {
-        _subjectCircle.Title = "お題";
+        _subjectCircle.Name = "お題";
         _subjectCircle.Text = _subject.CreateSubject();
         _subjectCircle.OnClick();
         _aiManager.CreateAnswer(_board.Circles);

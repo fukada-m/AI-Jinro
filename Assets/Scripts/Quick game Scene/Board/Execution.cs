@@ -46,7 +46,7 @@ public class Execution : MonoBehaviour
     // クリックされたプレイヤーを処刑する
     public void OnClick()
     {
-        string playerName = _board.CurrentCircle.Title;
+        string playerName = _board.CurrentCircle.Name;
 
         // フラッシュメッセージを表示
         GameObject flashMessageOBJ = Instantiate(_flashMessagePfefab, _canvasTransform);
@@ -70,7 +70,7 @@ public class Execution : MonoBehaviour
 
         // 掲示板の表示がお題とプレイヤー1でなければアクティブ
         Circle currentCircle = _board.CurrentCircle;
-        if (currentCircle.Title == "お題" || currentCircle.Title == "プレイヤー1")
+        if (currentCircle.Name == "お題" || currentCircle.Name == "プレイヤー1")
         {
             _ExecuteButton.SetActive(false);
         }
