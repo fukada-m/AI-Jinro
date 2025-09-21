@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// 投票中は投稿できなくするステート
+// 投票中は投稿でるステート
 public class VoteState : MonoBehaviour, IMessageState
 {
     [SerializeField] InputField _inputField;      // 入力欄
