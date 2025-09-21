@@ -16,6 +16,7 @@ public abstract class PhaseBase : MonoBehaviour
     [SerializeField] protected Text _phaseText; // 今どのフェーズか表示する
 
     protected MessageContext _messageContext; // メッセージの送信先を決めるステートパターン
+    TimeController _timeController;
 
     protected virtual void Awake()
     {
@@ -28,14 +29,17 @@ public abstract class PhaseBase : MonoBehaviour
 
         _messageContext = GetComponent<MessageContext>();
         if (_messageContext == null) Debug.LogError("MessageContextクラスがGetComponentできませんでした");
-        
+
+        _timeController = GetComponent<TimeController>();
+        if (_timeController == null) Debug.LogError("TimeControllerクラスがGetComponentできませんでした");
+
     }
 
     // カウントダウンを開始して、フラッシュメッセージを流して、フェーズテキストを表示して、AIがアクションを行う
     public virtual void ChangePhase()
     {
         _countdownTimer.StartCountdown(_time);
-        
+
         // フラッシュメッセージを表示
         GameObject flashMessageOBJ = Instantiate(_flashMessagePrefab, _canvasTransform);
         FlashMessage flashMessage = flashMessageOBJ.GetComponent<FlashMessage>();
@@ -43,6 +47,7 @@ public abstract class PhaseBase : MonoBehaviour
 
         _phaseText.text = _text;
         AiAction();
+        _timeController.CheckActiveTimeButton();
     }
 
     // このフェーズで行うAIのアクション
