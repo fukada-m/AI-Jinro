@@ -8,9 +8,16 @@ using UnityEngine.UI;
 public class Board : MonoBehaviour
 {
     public Circle CurrentCircle { get; private set; }
+    public List<Circle> Circles = new List<Circle>();
     [SerializeField] Text _titleText; // ボードに表示されるタイトル
     [SerializeField] Text _mainText; // ボードに表示される本文
-    public List<Circle> Circles = new List<Circle>();
+    CircleLayout _circleLayout;
+
+    void Awake()
+    {
+        _circleLayout = GetComponent<CircleLayout>();
+        
+    }
 
     void Start()
     {
@@ -44,15 +51,17 @@ public class Board : MonoBehaviour
         CurrentCircle = Circles[index];
         CurrentCircle.OnClick();
     }
+    
     // プレイヤー名が一致する丸を削除する
     public void Remove(string s)
     {
-        for (int i=0; i < Circles.Count; i++)
+        for (int i = 0; i < Circles.Count; i++)
         {
             if (Circles[i].Name == s)
             {
                 Circles[i].DestroySelf();
                 Circles.RemoveAt(i);
+                _circleLayout.ReHorizontalLayout();
             }
         }
     }
