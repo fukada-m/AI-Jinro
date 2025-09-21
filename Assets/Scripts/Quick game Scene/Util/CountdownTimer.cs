@@ -7,8 +7,8 @@ using System;
 // 各フェーズでカウントダウンを行う
 public class CountdownTimer : MonoBehaviour
 {
+    public float CurrentTime;
     [SerializeField] Text _timerText; //あと何秒か表示する
-
     Coroutine _countdownCoroutine;
 
     // カウントダウンが終了したことを通知するイベント
@@ -54,13 +54,13 @@ public class CountdownTimer : MonoBehaviour
 
     IEnumerator CountdownRoutine(float startTime)
     {
-        float currentTime = startTime;
+        CurrentTime = startTime;
 
-        while (currentTime > 0)
+        while (CurrentTime > 0)
         {
-            _timerText.text = $"あと{Mathf.CeilToInt(currentTime)}秒";
+            _timerText.text = $"あと{Mathf.CeilToInt(CurrentTime)}秒";
             yield return null; // 1フレーム待つ
-            currentTime -= Time.deltaTime;
+            CurrentTime -= Time.deltaTime;
         }
 
         _timerText.text = "終了";
