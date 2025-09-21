@@ -1801,7 +1801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e02004270d9c14db7a16a636ffbea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flashMessagePrefab: {fileID: 1568665765772825139, guid: aecc6c53dc0ace34e90137d9f35d4c2e, type: 3}
+  _inputField: {fileID: 1926593721}
+  _scrollRect: {fileID: 2010801891}
+  _content: {fileID: 1825810351}
+  _messagePrefab: {fileID: 4052208114736663642, guid: 887546a55ffddba44863e2c3ade5b506, type: 3}
 --- !u!114 &810498997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,7 +1882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da53d1aa7e2b081469c86b05ad7547d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 30
+  _time: 3
   _flashMessagePrefab: {fileID: 1568665765772825139, guid: aecc6c53dc0ace34e90137d9f35d4c2e, type: 3}
   _message: "\u6295\u7968\u7D50\u679C\u767A\u8868\uFF01\uFF01"
   _text: "\u6295\u7968\u7D50\u679C\u767A\u8868\u4E2D"
@@ -1937,7 +1940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b7c545c804c844ba41e59361884d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 30
+  _time: 3
   _flashMessagePrefab: {fileID: 1568665765772825139, guid: aecc6c53dc0ace34e90137d9f35d4c2e, type: 3}
   _message: "\u52DD\u6557\u5224\u5B9A\uFF01\uFF01"
   _text: "\u52DD\u6557\u5224\u5B9A"
@@ -2010,7 +2013,7 @@ MonoBehaviour:
   - {fileID: 927867713}
   - {fileID: 1674706970}
   - {fileID: 1067364712}
-  _ExecuteButton: {fileID: 849301389}
+  _executeButton: {fileID: 849301389}
 --- !u!114 &810499010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,6 +2026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfde647b363d4284dabd9b2390b56b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skipButton: {fileID: 462830574}
+  _addTimeButton: {fileID: 564563760}
 --- !u!114 &810499011
 MonoBehaviour:
   m_ObjectHideFlags: 0
