@@ -1,21 +1,29 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 // 投票中は投稿できなくするステート
 public class VoteState : MonoBehaviour, IMessageState
 {
-    protected Transform _canvasTransform; 
-    [SerializeField] protected GameObject _flashMessagePrefab ;
+    [SerializeField] InputField _inputField;      // 入力欄
+    [SerializeField] ScrollRect _scrollRect;      // ScrollView本体
+    [SerializeField] Transform _content;          // メッセージを表示する Content オブジェクト
+    [SerializeField] GameObject _messagePrefab;   // メッセージのPrefab
 
-    void Awake()
-    {
-        GameObject canvasOBJ = GameObject.Find("Canvas");
-        _canvasTransform = canvasOBJ.transform;
-        if (_canvasTransform == null) Debug.LogError("Canvasが見つかりませんでした");
-    }
     public void SendMessage()
     {
-        GameObject flashMessageOBJ = Instantiate(_flashMessagePrefab, _canvasTransform);
-        FlashMessage flashMessage = flashMessageOBJ.GetComponent<FlashMessage>();
-        flashMessage.ShowMessage("投票中はメッセージを投稿できません");
+        string text = _inputField.text;
+        if (string.IsNullOrWhiteSpace(text)) return;
+
+        // contentの子としてメッセージプレハブを生成して入力した文字を表示自動で一番下に追加される
+        GameObject newMessage = Instantiate(_messagePrefab, _content);
+        Text messageText = newMessage.GetComponentInChildren<Text>();
+        messageText.text = text;
+
+        // 入力欄をクリア
+        _inputField.text = "";
+
+        // スクロールを一番下へ
+        Canvas.ForceUpdateCanvases();
+        _scrollRect.verticalNormalizedPosition = 0f;
     }
 }
