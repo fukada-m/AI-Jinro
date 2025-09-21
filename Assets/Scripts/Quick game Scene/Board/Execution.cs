@@ -9,7 +9,7 @@ public class Execution : MonoBehaviour
     PhaseController _phaseController;
     [SerializeField] GameObject _flashMessagePfefab;
     [SerializeField] Circle[] _circles = new Circle[8]; //イベント購読用
-    [SerializeField] GameObject _ExecuteButton;
+    [SerializeField] GameObject _executeButton;
 
      // OnClickedイベント
     Subject<Unit> clicked = new Subject<Unit>();
@@ -47,6 +47,7 @@ public class Execution : MonoBehaviour
     public void OnClick()
     {
         string playerName = _board.CurrentCircle.Name;
+        _executeButton.SetActive(false);
 
         // フラッシュメッセージを表示
         GameObject flashMessageOBJ = Instantiate(_flashMessagePfefab, _canvasTransform);
@@ -64,7 +65,7 @@ public class Execution : MonoBehaviour
         //処刑フェーズでなければ非アクティブ
         if (currentPhase != "処刑")
         {
-            _ExecuteButton.SetActive(false);
+            _executeButton.SetActive(false);
             return;
         }
 
@@ -72,11 +73,11 @@ public class Execution : MonoBehaviour
         Circle currentCircle = _board.CurrentCircle;
         if (currentCircle.Name == "お題" || currentCircle.Name == "プレイヤー1")
         {
-            _ExecuteButton.SetActive(false);
+            _executeButton.SetActive(false);
         }
         else
         {
-            _ExecuteButton.SetActive(true);
+            _executeButton.SetActive(true);
         }
     }
 }
