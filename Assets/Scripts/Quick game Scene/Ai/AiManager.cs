@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 全てのAIにまとめて指示を出す
 public class AiManager : MonoBehaviour
 {
     [SerializeField] Circle _SubjectCircle;
@@ -35,7 +36,7 @@ public class AiManager : MonoBehaviour
             {
                 int playerNum = circles[i].Ai.ThinkVote();
                 vote.AiVote($"プレイヤー{playerNum}");
-                Debug.Log($"{circles[i].Name}はプレイヤー{playerNum}に投票しました");
+                WriteChat(circles[i].Name, $"プレイヤー{playerNum}に投票しました");
             }
         }
     }
@@ -47,19 +48,25 @@ public class AiManager : MonoBehaviour
         {
             if (circle.Name == "お題" || circle.Name == "プレイヤー1")
             {
-
+                // 何もしない。
             }
             else
             {
-                GameObject messageLineAI = Instantiate(_messagePrefab, _content);
-                Text playerName = messageLineAI.GetComponentInChildren<Text>();
-                playerName.text = circle.Name;
-                Transform message = messageLineAI.transform.Find("Message");
-                Text messageText = message.GetComponentInChildren<Text>();
-                messageText.text = "パチパチはじけよう";
-                Canvas.ForceUpdateCanvases();
-                _scrollRect.verticalNormalizedPosition = 0f;
+                WriteChat(circle.Name, "ぱちぱちはじけよう");
             }
         }
+
+    }
+
+    // name = プレイヤー名
+    // body = チャットに表示するメッセージ
+    void WriteChat(string name, string body)
+    {
+        GameObject messageLineAI = Instantiate(_messagePrefab, _content);
+        Text playerName = messageLineAI.GetComponentInChildren<Text>();
+        playerName.text = name;
+        Transform message = messageLineAI.transform.Find("Message");
+        Text messageText = message.GetComponentInChildren<Text>();
+        messageText.text = body;
     }
 }
